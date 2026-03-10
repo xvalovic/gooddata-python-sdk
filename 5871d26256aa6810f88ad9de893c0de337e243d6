@@ -1,0 +1,116 @@
+packages/gooddata-sdk/src/gooddata_sdk/catalog/workspace/content_service.py
+  0b093dc1d43ad247 43-45,669,685,758
+  4c1d6f0ce2304d2a 522-557,559,562-668,670-684,686-688
+packages/gooddata-sdk/src/gooddata_sdk/sdk.py
+  4c1d6f0ce2304d2a 42
+packages/gooddata-sdk/src/gooddata_sdk/cli/clone.py
+  4c1d6f0ce2304d2a 22-25,34-36
+  0b093dc1d43ad247 86,98
+packages/gooddata-sdk/src/gooddata_sdk/catalog/workspace/aac/writer.py
+  4c1d6f0ce2304d2a 1-22,24-29,31-32,34-53,69-84
+packages/gooddata-sdk/src/gooddata_sdk/catalog/workspace/aac/loader.py
+  4c1d6f0ce2304d2a 1-29,31-33,37-47,95-108,113-114,116-138,151,156-163
+  743963691770dd13 57-94
+  0b093dc1d43ad247 34-35,48-56,109-112,115,139-150,152-155
+gooddata-api-client/gooddata_api_client/model/aac_query.py
+  743963691770dd13 95
+packages/gooddata-sdk/src/gooddata_sdk/cli/deploy.py
+  4c1d6f0ce2304d2a 27,29-31,40-42
+  0b093dc1d43ad247 88,100
+packages/gooddata-sdk/src/gooddata_sdk/cli/gdc_core.py
+  4c1d6f0ce2304d2a 6,13,15-21,23-24,56
+gooddata-api-client/gooddata_api_client/model/aac_dataset_primary_key.py
+  743963691770dd13 85,94
+gooddata-api-client/gooddata_api_client/model_utils.py
+  0b093dc1d43ad247 1911-1912,1915
+  743963691770dd13 258-260,381-383,1913-1914,1916
+packages/gooddata-sdk/src/gooddata_sdk/client.py
+  0b093dc1d43ad247 91
+  4c1d6f0ce2304d2a 73-74,159-165
+packages/gooddata-sdk/src/gooddata_sdk/catalog/catalog_service_base.py
+  4c1d6f0ce2304d2a 22-23
+packages/gooddata-sdk/src/gooddata_sdk/catalog/workspace/aac/__init__.py
+  4c1d6f0ce2304d2a 1-18
+gooddata-api-client/gooddata_api_client/model/aac_visualization_basic_buckets.py
+  743963691770dd13 68-69,71,73,76-77,79-80,83-86
+gooddata-api-client/gooddata_api_client/model/aac_dataset.py
+  0b093dc1d43ad247 182,284
+  743963691770dd13 103
+packages/gooddata-sdk/src/gooddata_sdk/config.py
+  4c1d6f0ce2304d2a 38
+packages/gooddata-sdk/tests/catalog/test_aac_loader_writer.py
+  4c1d6f0ce2304d2a 1-4,7-124,126-129,131-147
+  0b093dc1d43ad247 125
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.8",
+  "base_commit_sha": "5871d26256aa6810f88ad9de893c0de337e243d6",
+  "prompts": {
+    "0b093dc1d43ad247": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "419006ad-aa62-437f-ae34-f6b8cb61c285",
+        "model": "default"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>",
+      "messages": [],
+      "total_additions": 264,
+      "total_deletions": 270,
+      "accepted_lines": 101,
+      "overriden_lines": 10
+    },
+    "478415a849a93edf": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "277534a2-b3be-4e8d-aa72-4e9b2ebae647",
+        "model": "composer-1.5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>",
+      "messages": [],
+      "total_additions": 6,
+      "total_deletions": 6,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    },
+    "4c1d6f0ce2304d2a": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3f190cc0-e32d-454f-a029-68838d18dbd8",
+        "model": "composer-1.5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>",
+      "messages": [],
+      "total_additions": 717,
+      "total_deletions": 140,
+      "accepted_lines": 560,
+      "overriden_lines": 47
+    },
+    "743963691770dd13": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "cc74f340-5f1d-4f59-a4c9-bea7aa970a0d",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>",
+      "messages": [],
+      "total_additions": 124,
+      "total_deletions": 40,
+      "accepted_lines": 71,
+      "overriden_lines": 5
+    },
+    "8ebbf67fd7d76f99": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6688a7d7-9828-4ac0-8095-3b750a101a4f",
+        "model": "composer-1.5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>",
+      "messages": [],
+      "total_additions": 91,
+      "total_deletions": 0,
+      "accepted_lines": 75,
+      "overriden_lines": 4
+    }
+  }
+}
