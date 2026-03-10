@@ -255,7 +255,9 @@ class OpenApiModel(object):
         # The discriminator name is obtained from the discriminator meta-data
         # and the discriminator value is obtained from the input data.
         discr_propertyname_py = list(cls.discriminator.keys())[0]
-        discr_propertyname_js = cls.attribute_map[discr_propertyname_py]
+        discr_propertyname_js = cls.attribute_map.get(
+            discr_propertyname_py, discr_propertyname_py
+        )
         if discr_propertyname_js in kwargs:
             discr_value = kwargs[discr_propertyname_js]
         elif discr_propertyname_py in kwargs:
@@ -376,7 +378,9 @@ class OpenApiModel(object):
         # The discriminator name is obtained from the discriminator meta-data
         # and the discriminator value is obtained from the input data.
         discr_propertyname_py = list(cls.discriminator.keys())[0]
-        discr_propertyname_js = cls.attribute_map[discr_propertyname_py]
+        discr_propertyname_js = cls.attribute_map.get(
+            discr_propertyname_py, discr_propertyname_py
+        )
         if discr_propertyname_js in kwargs:
             discr_value = kwargs[discr_propertyname_js]
         elif discr_propertyname_py in kwargs:
@@ -1586,8 +1590,8 @@ def validate_and_convert_types(input_value, required_types_mixed, path_to_item,
     input_class_simple = get_simple_class(input_value)
     valid_type = is_valid_type(input_class_simple, valid_classes)
     if not valid_type:
-        if (configuration 
-                or (input_class_simple == dict 
+        if (configuration
+                or (input_class_simple == dict
                     and not dict in valid_classes)):
             # if input_value is not valid_type try to convert it
             converted_instance = attempt_convert_item(
@@ -1904,6 +1908,12 @@ def get_oneof_instance(cls, model_kwargs, constant_kwargs, model_arg=None):
             cls.__name__
         )
     elif len(oneof_instances) > 1:
+        # Tie-breaker when API returns both tabs and sections: prefer AacDashboardWithTabs (tabbed).
+        if cls.__name__ == "AacDashboard":
+            from gooddata_api_client.model.aac_dashboard_with_tabs import AacDashboardWithTabs
+            for inst in oneof_instances:
+                if type(inst).__name__ == AacDashboardWithTabs.__name__:
+                    return inst
         raise ApiValueError(
             "Invalid inputs given to generate an instance of %s. Multiple "
             "oneOf schemas matched the inputs, but a max of one is allowed." %

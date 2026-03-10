@@ -92,7 +92,7 @@ class AacQuery(ModelNormal):
         """
         lazy_import()
         return {
-            'fields': ({str: (AacQueryFieldsValue,)},),  # noqa: E501
+            'fields': ({str: (AacQueryFieldsValue, str)},),  # noqa: E501
             'filter_by': ({str: (AacQueryFilter,)},),  # noqa: E501
             'sort_by': ([JsonNode],),  # noqa: E501
         }

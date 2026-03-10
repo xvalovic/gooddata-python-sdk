@@ -31,11 +31,9 @@ from gooddata_api_client.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from gooddata_api_client.model.aac_dataset_primary_key import AacDatasetPrimaryKey
     from gooddata_api_client.model.aac_field import AacField
     from gooddata_api_client.model.aac_reference import AacReference
     from gooddata_api_client.model.aac_workspace_data_filter import AacWorkspaceDataFilter
-    globals()['AacDatasetPrimaryKey'] = AacDatasetPrimaryKey
     globals()['AacField'] = AacField
     globals()['AacReference'] = AacReference
     globals()['AacWorkspaceDataFilter'] = AacWorkspaceDataFilter
@@ -102,7 +100,7 @@ class AacDataset(ModelNormal):
             'description': (str,),  # noqa: E501
             'fields': ({str: (AacField,)},),  # noqa: E501
             'precedence': (int,),  # noqa: E501
-            'primary_key': (AacDatasetPrimaryKey,),  # noqa: E501
+            'primary_key': (str, [str], none_type,),  # noqa: E501
             'references': ([AacReference],),  # noqa: E501
             'sql': (str,),  # noqa: E501
             'table_path': (str,),  # noqa: E501
@@ -181,7 +179,7 @@ class AacDataset(ModelNormal):
             description (str): Dataset description.. [optional]  # noqa: E501
             fields ({str: (AacField,)}): Dataset fields (attributes, facts, aggregated facts).. [optional]  # noqa: E501
             precedence (int): Precedence value for aggregate awareness.. [optional]  # noqa: E501
-            primary_key (AacDatasetPrimaryKey): [optional]  # noqa: E501
+            primary_key (str, [str] or None): Single column name or list of columns. [optional]  # noqa: E501
             references ([AacReference]): References to other datasets.. [optional]  # noqa: E501
             sql (str): SQL statement defining this dataset.. [optional]  # noqa: E501
             table_path (str): Table path in the data source.. [optional]  # noqa: E501
@@ -283,7 +281,7 @@ class AacDataset(ModelNormal):
             description (str): Dataset description.. [optional]  # noqa: E501
             fields ({str: (AacField,)}): Dataset fields (attributes, facts, aggregated facts).. [optional]  # noqa: E501
             precedence (int): Precedence value for aggregate awareness.. [optional]  # noqa: E501
-            primary_key (AacDatasetPrimaryKey): [optional]  # noqa: E501
+            primary_key (str, [str] or None): Single column name or list of columns. [optional]  # noqa: E501
             references ([AacReference]): References to other datasets.. [optional]  # noqa: E501
             sql (str): SQL statement defining this dataset.. [optional]  # noqa: E501
             table_path (str): Table path in the data source.. [optional]  # noqa: E501

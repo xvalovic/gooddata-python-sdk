@@ -40,6 +40,9 @@ from gooddata_sdk.compute.model.filter import Filter
 from gooddata_sdk.compute.model.metric import Metric
 from gooddata_sdk.utils import load_all_entities
 
+# Subdirectory under project root where AAC workspace (LDM + analytics) is stored.
+AAC_ANALYTICS_SUBDIR = "analytics"
+
 ValidObjectTypes = Union[Attribute, Metric, Filter, CatalogLabel, CatalogFact, CatalogMetric]
 
 # Use typing collection types to support python < py3.9
@@ -516,6 +519,173 @@ class CatalogWorkspaceContentService(CatalogServiceBase):
         """
         return CatalogDeclarativeAnalytics.load_from_disk(path)
 
+    # AAC (Analytics as Code) methods
+
+    def get_logical_model_aac(self, workspace_id: str):
+        """Retrieve the logical data model in AAC format.
+
+        Args:
+            workspace_id: Workspace identification string.
+
+        Returns:
+            AacLogicalModel from the AAC API.
+        """
+        return self._aac_logical_data_model_api.get_logical_model_aac(workspace_id=workspace_id)
+
+    def set_logical_model_aac(self, workspace_id: str, aac_logical_model) -> None:
+        """Set the logical data model from AAC format.
+
+        Args:
+            workspace_id: Workspace identification string.
+            aac_logical_model: AacLogicalModel to set.
+        """
+        self._aac_logical_data_model_api.set_logical_model_aac(
+            workspace_id=workspace_id, aac_logical_model=aac_logical_model
+        )
+
+    def get_analytics_model_aac(
+        self, workspace_id: str, exclude: list[str] | None = None
+    ):
+        """Retrieve the analytics model in AAC format.
+
+        Args:
+            workspace_id: Workspace identification string.
+            exclude: Optional list of properties to exclude (e.g. ["ACTIVITY_INFO"]).
+
+        Returns:
+            AacAnalyticsModel from the AAC API.
+        """
+        kwargs: dict = {"workspace_id": workspace_id}
+        if exclude:
+            kwargs["exclude"] = exclude
+        return self._aac_analytics_model_api.get_analytics_model_aac(**kwargs)
+
+    def set_analytics_model_aac(self, workspace_id: str, aac_analytics_model) -> None:
+        """Set the analytics model from AAC format.
+
+        Args:
+            workspace_id: Workspace identification string.
+            aac_analytics_model: AacAnalyticsModel to set.
+        """
+        self._aac_analytics_model_api.set_analytics_model_aac(
+            workspace_id=workspace_id, aac_analytics_model=aac_analytics_model
+        )
+
+    def store_logical_model_aac(self, workspace_id: str, path: Path = Path.cwd()) -> None:
+        """Store logical model in AAC YAML format.
+
+        Args:
+            workspace_id: Workspace identification string.
+            path: Root path for AAC layout (e.g. analytics/).
+        """
+        from gooddata_sdk.catalog.workspace.aac.writer import store_logical_model_aac as _store
+
+        model = self.get_logical_model_aac(workspace_id)
+        _store(model, path)
+
+    @staticmethod
+    def load_logical_model_aac(path: Path = Path.cwd()):
+        """Load AacLogicalModel from AAC YAML layout.
+
+        Args:
+            path: Root path containing datasets/ and dates/ directories.
+
+        Returns:
+            AacLogicalModel.
+        """
+        from gooddata_sdk.catalog.workspace.aac.loader import load_logical_model_aac as _load
+
+        return _load(path)
+
+    def store_analytics_model_aac(
+        self,
+        workspace_id: str,
+        path: Path = Path.cwd(),
+        exclude: list[str] | None = None,
+    ) -> None:
+        """Store analytics model in AAC YAML format.
+
+        Args:
+            workspace_id: Workspace identification string.
+            path: Root path for AAC layout (e.g. analytics/).
+            exclude: Optional list of properties to exclude.
+        """
+        from gooddata_sdk.catalog.workspace.aac.writer import store_analytics_model_aac as _store
+
+        model = self.get_analytics_model_aac(workspace_id, exclude)
+        _store(model, path)
+
+    @staticmethod
+    def load_analytics_model_aac(path: Path = Path.cwd()):
+        """Load AacAnalyticsModel from AAC YAML layout.
+
+        Args:
+            path: Root path containing metrics/, visualisations/, etc.
+
+        Returns:
+            AacAnalyticsModel.
+        """
+        from gooddata_sdk.catalog.workspace.aac.loader import load_analytics_model_aac as _load
+
+        return _load(path)
+
+    def load_and_put_logical_model_aac(
+        self, workspace_id: str, path: Path = Path.cwd()
+    ) -> None:
+        """Load logical model from AAC YAML and set it for the workspace.
+
+        Args:
+            workspace_id: Workspace identification string.
+            path: Root path for AAC layout.
+        """
+        model = self.load_logical_model_aac(path)
+        self.set_logical_model_aac(workspace_id, model)
+
+    def load_and_put_analytics_model_aac(
+        self, workspace_id: str, path: Path = Path.cwd()
+    ) -> None:
+        """Load analytics model from AAC YAML and set it for the workspace.
+
+        Args:
+            workspace_id: Workspace identification string.
+            path: Root path for AAC layout.
+        """
+        model = self.load_analytics_model_aac(path)
+        self.set_analytics_model_aac(workspace_id, model)
+
+    def store_workspace_aac(
+        self,
+        workspace_id: str,
+        path: Path = Path.cwd(),
+        exclude: list[str] | None = None,
+    ) -> None:
+        """Store both LDM and analytics model in AAC format under path/analytics/.
+
+        Args:
+            workspace_id: Workspace identification string.
+            path: Project root (analytics/ will be created under it).
+            exclude: Optional list of properties to exclude from analytics.
+        """
+        analytics_root = path / AAC_ANALYTICS_SUBDIR
+        analytics_root.mkdir(parents=True, exist_ok=True)
+        self.store_logical_model_aac(workspace_id, analytics_root)
+        self.store_analytics_model_aac(workspace_id, analytics_root, exclude)
+
+    def load_and_put_workspace_aac(
+        self,
+        workspace_id: str,
+        path: Path = Path.cwd(),
+    ) -> None:
+        """Load both LDM and analytics from AAC YAML and set them for the workspace.
+
+        Args:
+            workspace_id: Workspace identification string.
+            path: Project root (analytics/ expected under it).
+        """
+        analytics_root = path / AAC_ANALYTICS_SUBDIR
+        self.load_and_put_logical_model_aac(workspace_id, analytics_root)
+        self.load_and_put_analytics_model_aac(workspace_id, analytics_root)
+
     # Help methods
 
     def layout_workspace_folder(self, workspace_id: str, layout_root_path: Path) -> Path:
@@ -585,14 +755,7 @@ class CatalogWorkspaceContentService(CatalogServiceBase):
 
         for available in response.items:
             _type = available["type"]
-
-            if _type not in by_type:
-                items_of_type: set[str] = set()
-                by_type[_type] = items_of_type
-            else:
-                items_of_type = by_type[_type]
-
-            items_of_type.add(available["id"])
+            by_type.setdefault(_type, set()).add(available["id"])
 
         return by_type
 

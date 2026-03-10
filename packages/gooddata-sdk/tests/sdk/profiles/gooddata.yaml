@@ -1,5 +1,9 @@
 # (C) 2024 GoodData Corporation
 profiles:
+  default:
+    host: https://abc.com/
+    token: $OK_TOKEN
+    data_source_id: demo_ds
   abc:
     host: https://abc.com/
     token: $OK_TOKEN
@@ -20,7 +24,7 @@ profiles:
     extra_user_agent: abc
     ssl_ca_cert: /path/to/cert.pem
 source_dir: analytics
-default_profile: abc
+default_profile: default
 
 access:
   demo_ds: $DS_PASSWORD

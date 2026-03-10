@@ -35,6 +35,7 @@ class Profile(ConfigBase):
     custom_headers: dict[str, str] | None = None
     extra_user_agent: str | None = None
     ssl_ca_cert: str | None = None
+    workspace_id: str | None = None
 
     def to_dict(self, use_env: bool = False) -> dict[str, str]:
         load_dotenv()

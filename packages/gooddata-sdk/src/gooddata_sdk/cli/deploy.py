@@ -1,64 +1,46 @@
 # (C) 2024 GoodData Corporation
 import argparse
-import json
-import subprocess
 from pathlib import Path
-from typing import Any
 
 from gooddata_sdk import (
     CatalogDeclarativeDataSources,
     CatalogDeclarativeUserGroups,
     CatalogDeclarativeUsers,
-    CatalogDeclarativeWorkspace,
     CatalogDeclarativeWorkspaceDataFilters,
-    CatalogDeclarativeWorkspaces,
     GoodDataSdk,
 )
 from gooddata_sdk.cli.constants import (
     BASE_DIR,
     CONFIG_FILE,
     DATA_SOURCES,
-    GD_COMMAND,
     USER_GROUPS,
     USERS,
     WORKSPACES,
     WORKSPACES_DATA_FILTERS,
 )
 from gooddata_sdk.cli.utils import measure_deploy
-
-
-def _call_gd_stram_out(path: Path) -> dict[str, Any]:
-    """
-    Call 'gd stream-out' command to read workspaces file structure using Node.js CLI.
-    """
-    assert (path / CONFIG_FILE).exists() and (path / BASE_DIR).exists()
-    p = subprocess.Popen(
-        [GD_COMMAND, "stream-out", "--no-validate"],
-        cwd=path,
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-    )
-    output, err = p.communicate()
-    if err:
-        print(f"Deploy workspaces failed with the following error {err=}.")
-    data = json.loads(output.decode())
-    if WORKSPACES not in data:
-        raise ValueError("No workspaces found in the output.")
-    return data
+from gooddata_sdk.utils import profile_content
 
 
 @measure_deploy(step=WORKSPACES)
 def _deploy_workspaces_with_filters(sdk: GoodDataSdk, path: Path) -> None:
+    """Deploy workspace LDM and analytics via AAC API (no gd CLI)."""
     analytics_root_dir = path / BASE_DIR
-    data = _call_gd_stram_out(path)
-    workspaces = [CatalogDeclarativeWorkspace.from_dict(workspace_dict) for workspace_dict in data[WORKSPACES]]
-    # fetch this information first, so we do not lose them
-    workspace_data_filters = CatalogDeclarativeWorkspaceDataFilters.load_from_disk(analytics_root_dir)
-    workspaces_o = CatalogDeclarativeWorkspaces(
-        workspaces=workspaces, workspace_data_filters=workspace_data_filters.workspace_data_filters
+    if not analytics_root_dir.exists():
+        raise ValueError(f"Analytics directory not found: {analytics_root_dir}")
+
+    content = profile_content(profiles_path=path / CONFIG_FILE)
+    workspace_id = content.get("workspace_id")
+    if not workspace_id:
+        raise ValueError(
+            "workspace_id is required in gooddata.yaml profile for AAC deploy. "
+            "Add workspace_id to your profile, e.g.: profiles.default.workspace_id: demo"
+        )
+
+    sdk.catalog_workspace_content.load_and_put_workspace_aac(
+        workspace_id=workspace_id,
+        path=path,
     )
-    sdk.catalog_workspace.put_declarative_workspaces(workspaces_o)
 
 
 @measure_deploy(step="data sources")
@@ -103,7 +85,7 @@ def deploy_all(path: Path) -> None:
 
 def deploy_granular(path: Path, args: argparse.Namespace) -> None:
     init_file = path / CONFIG_FILE
-    analytics_root_dir = path / "analytics"
+    analytics_root_dir = path / BASE_DIR
     selected_entities = set(args.only)
     sdk = GoodDataSdk.create_from_profile(profiles_path=init_file)
     if DATA_SOURCES in selected_entities:
@@ -115,4 +97,4 @@ def deploy_granular(path: Path, args: argparse.Namespace) -> None:
     if WORKSPACES_DATA_FILTERS in selected_entities:
         _deploy_workspace_data_filters(sdk, analytics_root_dir)
     if WORKSPACES in selected_entities:
-        _deploy_workspaces_with_filters(sdk, analytics_root_dir.parent)
+        _deploy_workspaces_with_filters(sdk, path)

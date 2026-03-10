@@ -19,6 +19,8 @@ class CatalogServiceBase:
         self._layout_api: apis.LayoutApi = api_client.layout_api
         self._actions_api: apis.ActionsApi = api_client.actions_api
         self._user_management_api: apis.UserManagementApi = api_client.user_management_api
+        self._aac_analytics_model_api: apis.AACAnalyticsModelApi = api_client.aac_analytics_model_api
+        self._aac_logical_data_model_api: apis.AACLogicalDataModelApi = api_client.aac_logical_data_model_api
 
     def get_organization(self) -> CatalogOrganization:
         # The generated client does work properly with redirecting APIs

@@ -82,6 +82,7 @@ class AacDatasetPrimaryKey(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'columns': ([str],),  # noqa: E501 - list of column names (API returns str | [str])
         }
 
     @cached_property
@@ -90,6 +91,7 @@ class AacDatasetPrimaryKey(ModelNormal):
 
 
     attribute_map = {
+        'columns': 'columns',  # noqa: E501
     }
 
     read_only_vars = {
@@ -144,18 +146,23 @@ class AacDatasetPrimaryKey(ModelNormal):
         self = super(OpenApiModel, cls).__new__(cls)
 
         if args:
-            for arg in args:
-                if isinstance(arg, dict):
-                    kwargs.update(arg)
-                else:
-                    raise ApiTypeError(
-                        "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments." % (
-                            args,
-                            self.__class__.__name__,
-                        ),
-                        path_to_item=_path_to_item,
-                        valid_classes=(self.__class__,),
-                    )
+            # API returns primary_key as string or array of strings; deserialize_model
+            # unpacks lists as *args, so we receive ('col1', 'col2') for ["col1", "col2"]
+            if all(isinstance(arg, str) for arg in args):
+                kwargs['columns'] = list(args)
+            else:
+                for arg in args:
+                    if isinstance(arg, dict):
+                        kwargs.update(arg)
+                    else:
+                        raise ApiTypeError(
+                            "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments." % (
+                                args,
+                                self.__class__.__name__,
+                            ),
+                            path_to_item=_path_to_item,
+                            valid_classes=(self.__class__,),
+                        )
 
         self._data_store = {}
         self._check_type = _check_type
@@ -227,18 +234,21 @@ class AacDatasetPrimaryKey(ModelNormal):
         _visited_composed_classes = kwargs.pop('_visited_composed_classes', ())
 
         if args:
-            for arg in args:
-                if isinstance(arg, dict):
-                    kwargs.update(arg)
-                else:
-                    raise ApiTypeError(
-                        "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments." % (
-                            args,
-                            self.__class__.__name__,
-                        ),
-                        path_to_item=_path_to_item,
-                        valid_classes=(self.__class__,),
-                    )
+            if all(isinstance(arg, str) for arg in args):
+                kwargs['columns'] = list(args)
+            else:
+                for arg in args:
+                    if isinstance(arg, dict):
+                        kwargs.update(arg)
+                    else:
+                        raise ApiTypeError(
+                            "Invalid positional arguments=%s passed to %s. Remove those invalid positional arguments." % (
+                                args,
+                                self.__class__.__name__,
+                            ),
+                            path_to_item=_path_to_item,
+                            valid_classes=(self.__class__,),
+                        )
 
         self._data_store = {}
         self._check_type = _check_type

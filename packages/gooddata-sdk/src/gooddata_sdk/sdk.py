@@ -36,7 +36,10 @@ class GoodDataSdk:
                 Initialized SDK.
         """
         content = profile_content(profile, profiles_path)
-        client = GoodDataApiClient(**content)
+        # Filter to only client params (profile may have workspace_id, data_source_id, etc.)
+        client_params = ("host", "token", "custom_headers", "extra_user_agent", "executions_cancellable", "ssl_ca_cert")
+        client_content = {k: v for k, v in content.items() if k in client_params}
+        client = GoodDataApiClient(**client_content)
         return cls(client)
 
     @classmethod

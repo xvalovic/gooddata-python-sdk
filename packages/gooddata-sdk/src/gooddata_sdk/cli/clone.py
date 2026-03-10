@@ -1,49 +1,40 @@
 # (C) 2024 GoodData Corporation
 import argparse
-import json
 import shutil
-import subprocess
 from pathlib import Path
 
-from gooddata_sdk import CatalogDeclarativeWorkspaces, GoodDataSdk
+from gooddata_sdk import GoodDataSdk
 from gooddata_sdk.cli.constants import (
     BASE_DIR,
     CONFIG_FILE,
     DATA_SOURCES,
-    GD_COMMAND,
     USER_GROUPS,
     USERS,
     WORKSPACES,
     WORKSPACES_DATA_FILTERS,
 )
-from gooddata_sdk.cli.utils import (
-    Bcolors,
-    measure_clone,
-)
-
-
-def _call_gd_stream_in(workspace_objects: CatalogDeclarativeWorkspaces, path: Path) -> None:
-    """
-    Call 'gd stream-in' command to create workspaces file structure using Node.js CLI.
-    """
-    workspaces = json.dumps({WORKSPACES: workspace_objects.to_dict()[WORKSPACES]})
-    p = subprocess.Popen(
-        [GD_COMMAND, "stream-in"],
-        cwd=path,
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-    )
-    _, err = p.communicate(input=workspaces.encode())
-    if err:
-        print(f"{Bcolors.FAIL}Clone workspaces failed with the following error {err=}.{Bcolors.ENDC}")
+from gooddata_sdk.cli.utils import measure_clone
+from gooddata_sdk.utils import profile_content
 
 
 @measure_clone(step="workspaces")
 def _clone_workspaces(sdk: GoodDataSdk, path: Path) -> None:
-    assert (path / CONFIG_FILE).exists() and (path / BASE_DIR).exists()
-    workspace_objects = sdk.catalog_workspace.get_declarative_workspaces()
-    _call_gd_stream_in(workspace_objects, path)
+    """Clone workspace LDM and analytics via AAC API (no gd CLI)."""
+    analytics_root_dir = path / BASE_DIR
+    analytics_root_dir.mkdir(parents=True, exist_ok=True)
+
+    content = profile_content(profiles_path=path / CONFIG_FILE)
+    workspace_id = content.get("workspace_id")
+    if not workspace_id:
+        raise ValueError(
+            "workspace_id is required in gooddata.yaml profile for AAC clone. "
+            "Add workspace_id to your profile, e.g.: profiles.default.workspace_id: demo"
+        )
+
+    sdk.catalog_workspace_content.store_workspace_aac(
+        workspace_id=workspace_id,
+        path=path,
+    )
 
 
 @measure_clone(step="data sources")
@@ -92,8 +83,7 @@ def clone_all(path: Path) -> None:
 
 def clone_granular(path: Path, args: argparse.Namespace) -> None:
     init_file = path / CONFIG_FILE
-    analytics_root_dir = path / "analytics"
-    config_directory = analytics_root_dir.parent
+    analytics_root_dir = path / BASE_DIR
     sdk = GoodDataSdk.create_from_profile(profiles_path=init_file)
     selected_entities = set(args.only)
     if DATA_SOURCES in selected_entities:
@@ -105,4 +95,4 @@ def clone_granular(path: Path, args: argparse.Namespace) -> None:
     if WORKSPACES_DATA_FILTERS in selected_entities:
         _clone_workspace_data_filters(sdk, analytics_root_dir)
     if WORKSPACES in selected_entities:
-        _clone_workspaces(sdk, config_directory)
+        _clone_workspaces(sdk, path)
