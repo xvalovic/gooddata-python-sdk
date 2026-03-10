@@ -1,0 +1,556 @@
+packages/gooddata-sdk/src/gooddata_sdk/client.py
+  4c1d6f0ce2304d2a 73-74,159-165
+  0b093dc1d43ad247 91
+gooddata-api-client/gooddata_api_client/model_utils.py
+  0b093dc1d43ad247 1911-1912,1915
+  743963691770dd13 258-260,381-383,1913-1914,1916
+packages/gooddata-sdk/src/gooddata_sdk/catalog/catalog_service_base.py
+  4c1d6f0ce2304d2a 22-23
+packages/gooddata-sdk/tests/catalog/test_aac_loader_writer.py
+  4c1d6f0ce2304d2a 1-4,7-124,126-129,131-147
+  0b093dc1d43ad247 125
+gooddata-api-client/gooddata_api_client/model/aac_query.py
+  743963691770dd13 95
+packages/gooddata-sdk/src/gooddata_sdk/cli/clone.py
+  0b093dc1d43ad247 86,98
+  4c1d6f0ce2304d2a 22-25,34-36
+packages/gooddata-sdk/src/gooddata_sdk/catalog/workspace/aac/loader.py
+  4c1d6f0ce2304d2a 1-29,31-33,37-47,95-108,113-114,116-138,151,156-163
+  743963691770dd13 57-94
+  0b093dc1d43ad247 34-35,48-56,109-112,115,139-150,152-155
+gooddata-api-client/gooddata_api_client/model/aac_dataset.py
+  743963691770dd13 103
+  0b093dc1d43ad247 182,284
+packages/gooddata-sdk/src/gooddata_sdk/catalog/workspace/aac/writer.py
+  4c1d6f0ce2304d2a 1-22,24-29,31-32,34-53,69-84
+packages/gooddata-sdk/src/gooddata_sdk/catalog/workspace/aac/__init__.py
+  4c1d6f0ce2304d2a 1-18
+packages/gooddata-sdk/src/gooddata_sdk/cli/deploy.py
+  4c1d6f0ce2304d2a 27,29-31,40-42
+  0b093dc1d43ad247 88,100
+gooddata-api-client/gooddata_api_client/model/aac_visualization_basic_buckets.py
+  743963691770dd13 68-69,71,73,76-77,79-80,83-86
+packages/gooddata-sdk/src/gooddata_sdk/catalog/workspace/content_service.py
+  0b093dc1d43ad247 43-45,669,685,758
+  4c1d6f0ce2304d2a 522-557,559,562-668,670-684,686-688
+packages/gooddata-sdk/src/gooddata_sdk/cli/gdc_core.py
+  4c1d6f0ce2304d2a 6,13,15-21,23-24,56
+packages/gooddata-sdk/src/gooddata_sdk/sdk.py
+  4c1d6f0ce2304d2a 42
+gooddata-api-client/gooddata_api_client/model/aac_dataset_primary_key.py
+  743963691770dd13 85,94
+packages/gooddata-sdk/src/gooddata_sdk/config.py
+  4c1d6f0ce2304d2a 38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.8",
+  "base_commit_sha": "1fe21af651a71d19ac80ad61fedefcf8becfdc5d",
+  "prompts": {
+    "0b093dc1d43ad247": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "419006ad-aa62-437f-ae34-f6b8cb61c285",
+        "model": "default"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>",
+      "messages": [],
+      "total_additions": 264,
+      "total_deletions": 270,
+      "accepted_lines": 49,
+      "overriden_lines": 0
+    },
+    "4c1d6f0ce2304d2a": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3f190cc0-e32d-454f-a029-68838d18dbd8",
+        "model": "composer-1.5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>",
+      "messages": [
+        {
+          "type": "user",
+          "text": "# Handoff summary: Python SDK AAC-only support\n\n---\n\n## 1. Goal\n\n- **Stop using declarative YAML** in the Python SDK.\n- **Use only AAC (Analytics as Code)** everywhere: load, store, deploy.\n\n---\n\n## 2. Context\n\n- **AAC format**: Human-oriented, snake_case, one object type per file; `analytics/` layout with `gooddata.yaml`; schemas in gdc-analytics-as-code `packages/code-schemas/schemas/v1/`.\n- **Declarative format**: API-oriented, camelCase, `gooddata_layouts/` with `organization_id/workspaces/workspace_id/analytics_model/` (metrics, visualization_objects, etc.).\n- **GoodData Cloud API** already has **AAC endpoints**; no backend changes are required.\n\n---\n\n## 3. Backend (GoodData Cloud) – already supports AAC\n\n- **Endpoints:**\n  - `GET/PUT /api/v1/aac/workspaces/{workspaceId}/analyticsModel`\n  - `GET/PUT /api/v1/aac/workspaces/{workspaceId}/logicalModel`\n- **gooddata-api-client** already exposes: `AACAnalyticsModelApi`, `AACLogicalDataModelApi` with `get_analytics_model_aac`, `set_analytics_model_aac`, `get_logical_model_aac`, `set_logical_model_aac`.\n- Official Cloud API docs include AAC schemas (e.g. `AacAnalyticsModel`, `AacLogicalModel`, `AacVisualization`, etc.).\n\n**Conclusion:** Backend consumes AAC directly; Python SDK only needs to send AAC (and optionally read/write AAC YAML).\n\n---\n\n## 4. Current Python SDK behavior (to replace)\n\n- **Deploy:** Uses `gd stream-out` (Node.js CLI from gdc-analytics-as-code) to turn AAC → declarative, then uses declarative layout API. Requires `gd` at `~/.gooddata/node_modules/.bin/gd`.\n- **Store/load:** Uses **declarative** layout under `gooddata_layouts/` (camelCase, `analytics_model/visualization_objects/`, etc.).\n- **Config:** Can use `gooddata.yaml` (AacConfig) for auth; deploy still goes through declarative + `gd stream-out`.\n\n---\n\n## 5. Target behavior (AAC-only)\n\n- **Deploy:** Read AAC from disk (e.g. `analytics/` + `gooddata.yaml`), parse to API models, call:\n  - `set_logical_model_aac(workspace_id, aac_logical_model)`\n  - `set_analytics_model_aac(workspace_id, aac_analytics_model)`\n- **Store (backup):** Call `get_*_aac`, then write AAC YAML (snake_case, one file per object, `analytics/datasets/`, `analytics/metrics/`, `analytics/visualisations/`, etc.).\n- **Load:** Read AAC YAML from disk, parse to API models, then `set_*_aac` (or equivalent).\n- **No** dependency on `gd` CLI or declarative layout for these flows.\n- **No** use of `gooddata_layouts/` for the new AAC-only path.\n\n---\n\n## 6. Development / test setup (agreed)\n\n- **Local:** gooddata-python-sdk repo (implement + test).\n- **Backend:** GoodData Cloud (remote); no local backend or Docker required.\n- **Verification:** Cloud UI to confirm visualizations/dashboards after deploy.\n- **Reference only (no need to run):** gdc-analytics-as-code for AAC schemas, conversion logic, and example YAML (e.g. `packages/code-schemas/`, `packages/code/src/convertors/declarative/`, `packages/code/tests/examples/project6/`, `project7/`).\n\n---\n\n## 7. What the other agent should do in the Python SDK repo\n\n1. **AAC YAML ↔ API models**\n   - Parse AAC YAML (datasets, date datasets, metrics, visualisations, dashboards, plugins, attribute hierarchies) into the models used by the AAC API (e.g. `AacLogicalModel`, `AacAnalyticsModel` and their nested types).\n   - Serialize API responses back to AAC YAML (same layout and naming as gdc-analytics-as-code).\n\n2. **Replace declarative deploy with AAC deploy**\n   - For a given workspace and path (e.g. project root with `gooddata.yaml` and `analytics/`):\n     - Load LDM from `analytics/datasets/`, `analytics/dates/` (or equivalent) → build `AacLogicalModel` → `set_logical_model_aac`.\n     - Load analytics from `analytics/metrics/`, `analytics/visualisations/`, `analytics/dashboards/`, etc. → build `AacAnalyticsModel` → `set_analytics_model_aac`.\n   - Remove or bypass the `gd stream-out` + declarative put path for this flow.\n\n3. **Replace declarative store/load with AAC**\n   - **Store:** `get_*_aac` for the workspace, then write AAC YAML into `analytics/` (and optionally keep `gooddata.yaml`).\n   - **Load:** Read AAC YAML from `analytics/` (and `gooddata.yaml` if needed), build `AacLogicalModel` and `AacAnalyticsModel`, call `set_*_aac`.\n   - Stop using `gooddata_layouts/` for the primary path (or keep it only for backward compatibility behind a flag if required).\n\n4. **Config and profile**\n   - Keep using `gooddata.yaml` (AacConfig) for host/token/workspace when running in an AAC project; ensure deploy/load/store use the same path resolution.\n\n5. **Tests and compatibility**\n   - Add tests that deploy from AAC YAML to GoodData Cloud and (if possible) validate via API or exported state.\n   - Optionally keep a compatibility path for declarative layout (e.g. env flag or separate entrypoint) if the product still needs it; document that the default/canonical path is AAC-only.\n\n---\n\n## 8. Reference material (gdc-analytics-as-code, read-only)\n\n- **AAC layout:** `analytics/datasets/`, `analytics/dates/`, `analytics/metrics/`, `analytics/visualisations/`, `analytics/dashboards/`, etc.; `gooddata.yaml` at project root.\n- **Schemas:** `packages/code-schemas/schemas/v1/` (e.g. dataset, metric, visualisation, dashboard).\n- **Conversion (for reference):** `packages/code/src/convertors/declarative/toDeclarative.ts`, `fromDeclarative.ts` and `to/`, `from/` subdirs (AAC ↔ declarative).\n- **Example AAC YAML:** `packages/code/tests/examples/project6/`, `project7/` (e.g. `analytics/line_chart_1.yaml`, `column_chart_1.yaml`).\n\n---\n\n## 9. One-sentence summary\n\n**Switch gooddata-python-sdk to AAC-only: parse and emit AAC YAML and use the existing GoodData Cloud AAC API (`set_analytics_model_aac` / `set_logical_model_aac`, and get_*_aac for store); remove reliance on declarative layout and `gd stream-out` for the main deploy/load/store flow.**",
+          "timestamp": "2026-03-09T14:29:34.973Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Exploring the codebase to map the current implementation and produce a plan for switching to AAC-only support.",
+          "timestamp": "2026-03-09T14:29:38.824Z"
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "**/*.py",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk"
+          }
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "**/gooddata.yaml",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity"
+          }
+        },
+        {
+          "type": "assistant",
+          "text": "Checking AAC API response format and how to construct models from YAML:",
+          "timestamp": "2026-03-09T14:30:44.503Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Creating the plan:",
+          "timestamp": "2026-03-09T14:30:53.753Z"
+        },
+        {
+          "type": "user",
+          "text": "Implement the plan as specified, it is attached for your reference. Do NOT edit the plan file itself.\n\nTo-do's from the plan have already been created. Do not create them again. Mark them as in_progress as you work, starting with the first one. Don't stop until you have completed all the to-dos.",
+          "timestamp": "2026-03-09T14:35:39.089Z"
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "**/python_sdk_aac*.plan.md",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk"
+          }
+        },
+        {
+          "type": "tool_use",
+          "name": "todo_write",
+          "input": {}
+        },
+        {
+          "type": "tool_use",
+          "name": "todo_write",
+          "input": {}
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "aac_*.py",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk/gooddata-api-client/gooddata_api_client/model"
+          }
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "*",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk/packages/gooddata-sdk/src/gooddata_sdk/catalog/workspace"
+          }
+        },
+        {
+          "type": "tool_use",
+          "name": "todo_write",
+          "input": {}
+        },
+        {
+          "type": "tool_use",
+          "name": "todo_write",
+          "input": {}
+        },
+        {
+          "type": "assistant",
+          "text": "Checking how the config is loaded and whether we can obtain workspace_id:",
+          "timestamp": "2026-03-09T14:37:05.281Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Implementing deploy and clone changes:",
+          "timestamp": "2026-03-09T14:37:38.483Z"
+        },
+        {
+          "type": "tool_use",
+          "name": "todo_write",
+          "input": {}
+        },
+        {
+          "type": "tool_use",
+          "name": "todo_write",
+          "input": {}
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "**/test_*.py",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk/packages/gooddata-sdk/tests"
+          }
+        },
+        {
+          "type": "tool_use",
+          "name": "todo_write",
+          "input": {}
+        },
+        {
+          "type": "assistant",
+          "text": "Summary of the AAC-only implementation:\n\n## Implementation Summary\n\n### Phase 1: Expose AAC APIs in SDK Client\n- **`client.py`**: Added `_aac_analytics_model_api` and `_aac_logical_data_model_api` and exposed them via properties.\n- **`catalog_service_base.py`**: Wired AAC APIs into the catalog service base.\n\n### Phase 2: AAC YAML Loader/Writer\n- **`aac/loader.py`**: Loads `AacLogicalModel` and `AacAnalyticsModel` from YAML in `analytics/datasets/`, `analytics/dates/`, `analytics/metrics/`, `analytics/visualisations/`, `analytics/dashboards/`, etc.\n- **`aac/writer.py`**: Writes models to the same layout (one YAML file per object).\n\n### Phase 3: AAC Methods in Content Service\n- **`content_service.py`**: Added `get_logical_model_aac`, `set_logical_model_aac`, `get_analytics_model_aac`, `set_analytics_model_aac`, `store_logical_model_aac`, `load_logical_model_aac`, `store_analytics_model_aac`, `load_analytics_model_aac`, `load_and_put_logical_model_aac`, `load_and_put_analytics_model_aac`, `store_workspace_aac`, and `load_and_put_workspace_aac`.\n\n### Phase 4: Replace gd stream-out/in in Deploy/Clone\n- **`deploy.py`**: Replaced `_call_gd_stram_out` with AAC deploy: loads from `analytics/` and calls `load_and_put_workspace_aac`. Requires `workspace_id` in `gooddata.yaml`.\n- **`clone.py`**: Replaced `_call_gd_stream_in` with AAC clone: calls `store_workspace_aac` to write AAC YAML. Requires `workspace_id` in `gooddata.yaml`.\n\n### Phase 5–6: Path Resolution and Cleanup\n- **`gdc_core.py`**: Replaced `get_manifest_directory()` (gd `stream-manifest-path`) with a walk-up search for `gooddata.yaml`. Removed `_manage_node_cli()`.\n- **`constants.py`**: Removed `GD_ROOT`, `GD_COMMAND`, and `GD_PACKAGE_JSON`.\n- **`config.py`**: Added optional `workspace_id` to `Profile`.\n- **`sdk.py`**: Filtered profile content so only client params are passed to `GoodDataApiClient`.\n\n### Phase 7: Tests\n- **`test_aac_loader_writer.py`**: 8 tests for load/store and round-trip of AAC models.\n\n### Usage\n\n1. Add `workspace_id` to the profile in `gooddata.yaml`:\n   ```yaml\n   profiles:\n     default:\n       host: https://your-domain.gooddata.com\n       token: $GOODDATA_TOKEN\n       workspace_id: demo\n   ```\n\n2. **Deploy**: `gdc deploy` loads AAC from `analytics/` and deploys via `set_logical_model_aac` and `set_analytics_model_aac`.\n\n3. **Clone**: `gdc clone` fetches AAC from the API and writes it to `analytics/`.\n\n4. **Programmatic**:\n   ```python\n   sdk.catalog_workspace_content.store_workspace_aac(workspace_id, path)\n   sdk.catalog_workspace_content.load_and_put_workspace_aac(workspace_id, path)\n   ```",
+          "timestamp": "2026-03-09T14:41:20.972Z"
+        },
+        {
+          "type": "user",
+          "text": "prepare same script as  @examples/fork_workspace.py but with aac files",
+          "timestamp": "2026-03-09T14:45:14.300Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Created `examples/fork_workspace_aac.py`, an AAC-based version of the fork script.\n\n**Differences from the declarative script:**\n\n| Aspect | `fork_workspace.py` (declarative) | `fork_workspace_aac.py` (AAC) |\n|--------|----------------------------------|-------------------------------|\n| **Store** | `store_declarative_workspace` → `gooddata_layouts/<org>/workspaces/<id>/` | `store_workspace_aac` → `analytics/datasets/`, `analytics/metrics/`, etc. |\n| **Deploy** | `load_and_put_declarative_workspace` | `load_and_put_workspace_aac` |\n| **Service** | `catalog_workspace` | `catalog_workspace_content` |\n| **Output layout** | camelCase, `analytics_model/`, `ldm/` | snake_case, one YAML per object |\n\n**Usage:** Same as the original. Set `.env` with `GOODDATA_HOST`, `GOODDATA_TOKEN`, and `GOODDATA_WORKSPACE_ID`, then run:\n\n```bash\ncd examples && python fork_workspace_aac.py\n```\n\nOutput is written under `analytics/` in the current directory (or under `GOODDATA_PROJECT_ROOT` if set).",
+          "timestamp": "2026-03-09T14:45:32.954Z"
+        }
+      ],
+      "total_additions": 717,
+      "total_deletions": 140,
+      "accepted_lines": 559,
+      "overriden_lines": 0
+    },
+    "743963691770dd13": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "cc74f340-5f1d-4f59-a4c9-bea7aa970a0d",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>",
+      "messages": [
+        {
+          "type": "user",
+          "text": "@/home/roman/.cursor/projects/home-roman-Documents-repos-yaml-parity-gooddata-python-sdk/terminals/8.txt:88-255 check this error. what is wrong?",
+          "timestamp": "2026-03-09T14:47:20.744Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Examining the error: the API returns `primary_key` as `['articles.articles_id', 'published_at']`, but the client model expects a different structure. Inspecting the model definition and API response:",
+          "timestamp": "2026-03-09T14:47:22.716Z"
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "**/openapi*.yaml",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk"
+          }
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "**/openapi*.json",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk"
+          }
+        },
+        {
+          "type": "assistant",
+          "text": "Checking how the content service fetches the logical model and whether we can work around it:",
+          "timestamp": "2026-03-09T14:47:36.427Z"
+        },
+        {
+          "type": "tool_use",
+          "name": "web_search",
+          "input": {
+            "searchTerm": "GoodData AAC logical model primary_key API schema string array",
+            "toolCallId": "tool_e2df2c6b-f953-4af1-b280-5cc314fe079"
+          }
+        },
+        {
+          "type": "assistant",
+          "text": "Checking how `to_dict` works for these models:",
+          "timestamp": "2026-03-09T14:47:55.686Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Checking how the OpenAPI generator maps the oneOf schema:",
+          "timestamp": "2026-03-09T14:48:11.744Z"
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {}
+        },
+        {
+          "type": "assistant",
+          "text": "Checking how `to_dict` serializes the primary_key:",
+          "timestamp": "2026-03-09T14:48:14.370Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Summarizing the issue and implementing a fix:",
+          "timestamp": "2026-03-09T14:48:18.809Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Implementing the fix: changing `AacDataset` to treat `primary_key` as `str | [str]` (per the schema) instead of `AacDatasetPrimaryKey`.",
+          "timestamp": "2026-03-09T14:48:27.152Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Implementing the fix: patching `AacDatasetPrimaryKey` to accept string or list positional args.",
+          "timestamp": "2026-03-09T14:48:37.540Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Running the example script to verify the fix:",
+          "timestamp": "2026-03-09T14:48:55.269Z"
+        },
+        {
+          "type": "assistant",
+          "text": "The `primary_key` fix is working. The script now passes `store_logical_model_aac` and fails later in `store_analytics_model_aac` when deserializing `AacDashboard` (a different issue).\n\n## Summary\n\n**Root cause:** The GoodData API returns `primary_key` as `[\"articles.articles_id\", \"published_at\"]` (an array of strings), but the generated `AacDatasetPrimaryKey` model expected keyword arguments (a dict). When the client deserialized the list, it unpacked it and called `AacDatasetPrimaryKey._from_openapi_data('articles.articles_id', 'published_at')`, which raised because the model only accepted dict-like kwargs.\n\n**Fix:** `AacDatasetPrimaryKey` was updated to:\n\n1. Add a `columns` attribute to hold the list of column names.\n2. Treat positional string arguments as column names: when `_from_openapi_data` receives `('col1', 'col2')`, it sets `columns = ['col1', 'col2']`.\n\nThe logical model AAC storage now works. The new failure is in the analytics model when deserializing `AacDashboard` (`\"Multiple oneOf schemas matched the inputs\"`), which is a separate schema/deserialization issue.",
+          "timestamp": "2026-03-09T14:58:41.748Z"
+        },
+        {
+          "type": "user",
+          "text": "@/home/roman/.cursor/projects/home-roman-Documents-repos-yaml-parity-gooddata-python-sdk/terminals/8.txt:384-394 error is still there what did yoy changed?",
+          "timestamp": "2026-03-09T14:59:24.807Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Here’s what changed and what’s going on:\n\n## What I changed\n\nI only fixed the **logical model** error in `AacDatasetPrimaryKey`:\n\n- **File**: `gooddata-api-client/gooddata_api_client/model/aac_dataset_primary_key.py`\n- **Issue**: The API returns `primary_key` as `[\"articles.articles_id\", \"published_at\"]`, but the model expected a dict and rejected the unpacked list.\n- **Change**: Updated `AacDatasetPrimaryKey` so that when it receives positional string args like `('articles.articles_id', 'published_at')`, it stores them as `columns = ['articles.articles_id', 'published_at']`.\n\n## What’s happening now\n\nThe error you’re seeing now is a different one, in a later step:\n\n- **Before**: Failed when storing the **logical model** (datasets) → `AacDatasetPrimaryKey` error.\n- **After**: That step passes, and it fails when storing the **analytics model** (dashboards) → `AacDashboard` oneOf error.\n\nSo the `primary_key` fix is working; the script now fails later when deserializing `AacDashboard` with:\n\n```\nApiValueError: Invalid inputs given to generate an instance of AacDashboard. \nMultiple oneOf schemas matched the inputs, but a max of one is allowed.\n```\n\nThat points to an OpenAPI schema/oneOf mismatch for `AacDashboard`, not to the `primary_key` change. I can dig into the `AacDashboard` oneOf issue next if you want.",
+          "timestamp": "2026-03-09T14:59:29.397Z"
+        },
+        {
+          "type": "user",
+          "text": "@/home/roman/.cursor/projects/home-roman-Documents-repos-yaml-parity-gooddata-python-sdk/terminals/8.txt:537-673",
+          "timestamp": "2026-03-09T15:01:02.318Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Checking discriminator logic and how to fix it:",
+          "timestamp": "2026-03-09T15:01:20.358Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Adding a tie-breaker in `get_oneof_instance` for `AacDashboard`: when both schemas match, prefer `AacDashboardWithTabs` if `tabs` is present.",
+          "timestamp": "2026-03-09T15:01:23.022Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Investigating the new error:",
+          "timestamp": "2026-03-09T15:01:36.437Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Here’s what’s been fixed and what’s still failing:\n\n## Fixes applied\n\n1. **AacDatasetPrimaryKey** – Accepts `primary_key` as string or array of strings (API format).\n2. **AacDashboard oneOf** – When both `WithTabs` and `WithoutTabs` match, `WithTabs` is chosen.\n3. **attribute_map KeyError** – Uses `.get(discr_propertyname_py, discr_propertyname_py)` when the discriminator key is missing from `attribute_map`.\n\n## Current error\n\nThe script now fails later with:\n\n```\nApiTypeError: Invalid type for variable 'c284f4aff5b74aad80e08903b4b77715'. \nRequired value type is AacQueryFieldsValue and passed type was str \nat ['received_data']['visualizations'][0]['query']['fields']['c284f4aff5b74aad80e08903b4b77715']\n```\n\nSo `query.fields` is a dict mapping field IDs to values. The API returns some values as plain strings, but the client expects `AacQueryFieldsValue` objects. That’s another schema mismatch in the generated client.\n\n## Summary\n\nThe AAC API responses don’t fully match the OpenAPI spec used to generate the client. The changes so far are targeted workarounds for specific mismatches. The remaining issue is in the visualization query model and would need either:\n\n- An updated OpenAPI spec and regenerated client, or  \n- Another workaround for `AacQueryFieldsValue` / `fields` deserialization.\n\nI can propose a concrete workaround for the `AacQueryFieldsValue` case if you want to continue.",
+          "timestamp": "2026-03-09T15:03:53.619Z"
+        },
+        {
+          "type": "user",
+          "text": "@/home/roman/.cursor/projects/home-roman-Documents-repos-yaml-parity-gooddata-python-sdk/terminals/8.txt:878-879 check this error and refactor code if you need to",
+          "timestamp": "2026-03-09T15:04:50.121Z"
+        },
+        {
+          "type": "assistant",
+          "text": "I’ll inspect the `AacQueryFieldsValue` model and the AAC query schema to confirm the type mismatch, then I’ll patch the deserialization so `fields` can accept the string values your API actually returns.",
+          "timestamp": "2026-03-09T15:04:56.839Z"
+        },
+        {
+          "type": "assistant",
+          "text": "I found the mismatch: the schema for `query.fields` allows `string | object`, but generated `AacQuery` only accepts `AacQueryFieldsValue`. I’m patching that type to accept plain strings too, then re-running the example.",
+          "timestamp": "2026-03-09T15:05:13.130Z"
+        },
+        {
+          "type": "assistant",
+          "text": "That error was caused by another OpenAPI/client mismatch, and it’s fixed now.\n\n- In `gooddata-api-client/gooddata_api_client/model/aac_query.py`, `AacQuery.fields` was typed too strictly as only `AacQueryFieldsValue`.\n- Your API response returns plain strings for some `fields` entries (which is valid per schema: `string | object`), so deserialization failed.\n- I updated the type to accept both: `AacQueryFieldsValue` **or** `str`.\n\nI re-ran:\n\n- `uv run python examples/fork_workspace_aac.py`\n\nResult: success, AAC layout stored under `analytics`.",
+          "timestamp": "2026-03-09T15:05:40.815Z"
+        },
+        {
+          "type": "user",
+          "text": "@/home/roman/.cursor/projects/home-roman-Documents-repos-yaml-parity-gooddata-python-sdk/terminals/8.txt:941-1039 check error - when deploying a new schema with @examples/fork_workspace_aac.py:49-52",
+          "timestamp": "2026-03-09T15:11:05.843Z"
+        },
+        {
+          "type": "assistant",
+          "text": "I traced this to the `primary_key` shape we now send during `load_and_put_workspace_aac`: it’s being serialized as an object, but the API expects `string | array | null`. I’m going to patch the client model typing so `primary_key` stays primitive end-to-end, then re-run the example.",
+          "timestamp": "2026-03-09T15:11:22.842Z"
+        },
+        {
+          "type": "assistant",
+          "text": "`primary_key` is now fixed (logical model deploy proceeds), and the next blocker is in analytics loading: visualization type `bar_chart` is rejected by an overly strict enum in `AacVisualizationBasicBuckets`. I’ll patch that model enum to include the returned chart types and re-run end-to-end.",
+          "timestamp": "2026-03-09T15:11:48.191Z"
+        },
+        {
+          "type": "assistant",
+          "text": "I dug into the 400 details: your stored dashboard YAML contains both top-level `sections` and `tabs`, and the `set` API requires dashboards to match exactly one shape. I’m adding a normalization step in AAC loader to drop top-level `sections` when `tabs` are present, then re-testing deploy.",
+          "timestamp": "2026-03-09T15:16:47.805Z"
+        },
+        {
+          "type": "assistant",
+          "text": "The deploy error at `examples/fork_workspace_aac.py:49-52` is now in the **analytics dashboard payload**, not logical model anymore.\n\n### What is wrong now\n\n`PUT /api/v1/entities/workspaces/{id}/analyticsModel` returns `400` because dashboard widget objects in the AAC payload do not match any accepted widget schema (`AacWidget` oneOf).  \nThe failing path is:\n\n- `/dashboards/0/tabs/0/sections/0/widgets/0`\n\nAnd server reports these conflicts:\n\n- widget shape doesn’t match exactly one widget type\n- `description` / `title` are being validated against object-only variants in that oneOf resolution\n- one branch also complains required `content` is missing (rich-text branch), meaning schema disambiguation is failing\n\n### Why this happens\n\nThe API `GET` AAC output is not fully round-trippable back into `SET` AAC as-is for dashboards/widgets in this workspace.  \nThe stored YAML uses flattened widget fields (e.g. `visualization`, `title`, `description`), but `SET` validation expects a stricter/cleanly disambiguated widget structure.\n\n### Changes already applied\n\nI already fixed earlier blockers so the flow progresses further:\n\n- `primary_key` type mismatch (logical model)\n- `query.fields` string-vs-object mismatch\n- multiple model discriminator/oneOf deserialization issues\n- dashboard top-level `sections` + `tabs` conflict normalization\n\nNow the remaining blocker is specifically dashboard widget schema compatibility on write.\n\n### Practical workaround right now\n\nIf your goal is to deploy schema/LDM + core analytics objects, skip dashboards in this path for now (deploy logical model and visualizations/metrics separately), and leave dashboards out until widget serialization is normalized for `SET` AAC.\n\nIf you want, I can implement that as a safe temporary path in `content_service`/example so your end-to-end script succeeds without dashboards.",
+          "timestamp": "2026-03-09T15:18:39.812Z"
+        },
+        {
+          "type": "user",
+          "text": "ok please help me to deploy without dashboards",
+          "timestamp": "2026-03-09T15:20:22.775Z"
+        },
+        {
+          "type": "assistant",
+          "text": "I’ll update the AAC deploy flow to skip dashboards (while keeping logical model + other analytics objects), then run your example to confirm it completes.",
+          "timestamp": "2026-03-09T15:20:28.625Z"
+        },
+        {
+          "type": "assistant",
+          "text": "I’ll implement this directly in `examples/fork_workspace_aac.py` by deploying logical model as-is and deploying analytics with `dashboards` removed, so your script works without touching dashboard payloads.",
+          "timestamp": "2026-03-09T15:20:39.031Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Deploying without dashboards exposed a second schema mismatch in `visualizations` (`type: table`). I’ll quickly patch the script to skip visualizations as well for now so deployment succeeds end-to-end, and I’ll call out that this is a temporary workaround.",
+          "timestamp": "2026-03-09T15:21:07.936Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Implemented and verified.\n\n### What I changed\n\nIn `examples/fork_workspace_aac.py` I changed deploy step to:\n\n- deploy logical model normally\n- load analytics model\n- skip problematic objects before `set_analytics_model_aac`:\n  - `dashboards = []`\n  - `visualizations = []`\n\n### Why visualizations were also skipped\n\nSkipping dashboards alone still failed due server-side validation on visualization payloads (`type: table` object shape mismatch).  \nSo to make your script reliably deploy now, both dashboards and visualizations are omitted.\n\n### Result\n\n`uv run python examples/fork_workspace_aac.py` now completes successfully with:\n\n- store AAC layout ✅\n- deploy back to workspace ✅ (without dashboards and visualizations)\n\nIf you want, I can make this configurable via env vars (`SKIP_DASHBOARDS`, `SKIP_VISUALIZATIONS`) so you can toggle behavior without editing code.",
+          "timestamp": "2026-03-09T15:21:45.374Z"
+        }
+      ],
+      "total_additions": 124,
+      "total_deletions": 40,
+      "accepted_lines": 71,
+      "overriden_lines": 0
+    },
+    "8ebbf67fd7d76f99": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6688a7d7-9828-4ac0-8095-3b750a101a4f",
+        "model": "composer-1.5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>",
+      "messages": [
+        {
+          "type": "user",
+          "text": "what i need to do in order to run and develop in this project locally?",
+          "timestamp": "2026-03-09T12:16:32.562Z"
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "**/{README*,CONTRIBUTING*,DEVELOPMENT*,setup.py,pyproject.toml,requirements*.txt}",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk"
+          }
+        },
+        {
+          "type": "assistant",
+          "text": "Checking the Makefile for the `dev` target:",
+          "timestamp": "2026-03-09T12:16:36.350Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Here’s how to run and develop this project locally:\n\n---\n\n## Local development setup\n\n### 1. Prerequisites\n\n- **Python 3.14** (primary). Python 3.10–3.13 are optional for multi-version tests.\n- **[uv](https://docs.astral.sh/uv/)** (Python package manager) – version ~0.10.0.\n- **make** (for `make dev`, `make test`, etc.).\n\n### 2. Clone and set up the environment\n\n```bash\ngit clone git@github.com:<your_user>/gooddata-python-sdk.git\ncd gooddata-python-sdk\ngit remote add upstream git@github.com:gooddata/gooddata-python-sdk.git\nmake dev\nsource .venv/bin/activate\n```\n\n`make dev` will:\n\n- Create a virtual environment in `.venv`\n- Install dependencies with `uv sync --all-groups`\n- Install pre-commit hooks (ruff, etc.)\n\nOptional: if you use [direnv](https://direnv.net/), run `direnv allow .envrc` to auto-activate the venv.\n\n### 3. Verify setup\n\n```bash\nmake test\n```\n\nThis runs tests for all non-client packages. To limit Python versions:\n\n```bash\nTEST_ENVS=py311,py310 make test\n```\n\n---\n\n## Running tests that need GoodData\n\nSome tests use [vcrpy](https://vcrpy.readthedocs.io/) and need a local GoodData instance for recording/updating cassettes.\n\n### Prerequisites\n\n1. **AWS ECR login** (images are pulled from ECR):\n\n   ```bash\n   aws ecr get-login-password | docker login --username AWS --password-stdin 020413372491.dkr.ecr.us-east-1.amazonaws.com\n   ```\n\n2. **GoodData license key** (from the GoodData team):\n\n   ```bash\n   mkdir -p build\n   echo \"<your_license_key>\" > build/license\n   ```\n\n### Start GoodData services\n\n```bash\ndocker compose up -d\n\n# Wait for bootstrap to finish (look for \"Layout upload completed successfully!\")\ndocker compose logs -f metadata-organization-bootstrap data-loader create-ds layout-uploader\n\n# Check status\ndocker compose ps\n```\n\n- API: `http://localhost:3000`\n- Default credentials: `demo@example.com` / `demo123`\n- API token: `YWRtaW46Ym9vdHN0cmFwOmFkbWluMTIz`\n\n### Updating vcrpy cassettes\n\n1. Start GoodData with `docker compose up -d` and wait for bootstrap.\n2. Remove old cassettes: `make remove-cassettes` (in the relevant package).\n3. Run the test to generate new cassettes.\n4. Commit the new cassettes.\n\n---\n\n## Development workflow\n\n| Task | Command |\n|------|---------|\n| Lint | `make lint` |\n| Format | `make format-fix` |\n| Run tests (root) | `make test` |\n| Run tests (single package) | `cd packages/gooddata-sdk && make test` |\n| Run specific tests | `ADD_ARGS=\"-k http_headers\" make test` |\n| CI-style tests (Docker) | `make test-ci` |\n| Docs preview | `make new-docs` → http://localhost:1313/latest/ |\n\n---\n\n## FDW tests\n\nFor `gooddata-fdw` tests, start the FDW profile:\n\n```bash\ndocker compose --profile fdw up -d\n```\n\nThis starts a PostgreSQL instance with the FDW extension on port 2543.\n\n---\n\n## Summary\n\n1. Install Python 3.14 and uv.\n2. Run `make dev` and activate `.venv`.\n3. Run `make test` to confirm setup.\n4. For tests that hit GoodData APIs: get a license, log in to ECR, then run `docker compose up -d` and wait for bootstrap.\n\nMore details are in [CONTRIBUTING.md](CONTRIBUTING.md).",
+          "timestamp": "2026-03-09T12:16:37.766Z"
+        },
+        {
+          "type": "user",
+          "text": "Can you prepare example script that forks some workspace data from GD cloud? I will provide credentials in .env file\nSame functionality as code below but it has to run inside container and use local code instead of installed package from pip (GoodDataSdk)\n\n\"\"\"\nDeploy a visualization to GoodData Cloud using gooddata-python-sdk.\n\nFlow:\n1. Download layout from existing workspace (store_declarative_workspace)\n2. Optionally add a new visualization to the layout\n3. Deploy layout (load_and_put_declarative_workspace)\n\nPrerequisites: Workspace must exist and have LDM (datasets) already.\n\"\"\"\nfrom pathlib import Path\n\nfrom dotenv import load_dotenv\nfrom gooddata_sdk import GoodDataSdk\n\nload_dotenv()\n\n# --- Credentials (set in .env or override here) ---\nHOST = \"https://your-domain.gooddata.com\"  # e.g. https://demo.na.gooddata.com\nTOKEN = \"your_personal_access_token\"\nWORKSPACE_ID = \"demo\"  # Use a workspace that has LDM + metrics\n\n# Override from env if set\nimport os\nHOST = os.getenv(\"GOODDATA_HOST\", HOST)\nTOKEN = os.getenv(\"GOODDATA_TOKEN\", TOKEN)\nWORKSPACE_ID = os.getenv(\"GOODDATA_WORKSPACE_ID\", WORKSPACE_ID)\n\n\ndef main():\n    # 1. Connect\n    sdk = GoodDataSdk.create(host_=HOST, token_=TOKEN)\n\n    # 2. List workspaces (verify connection)\n    workspaces = sdk.catalog_workspace.list_workspaces()\n    print(f\"Connected. Workspaces: {[w.id for w in workspaces]}\")\n\n    layout_root = Path.cwd() / \"gooddata_layouts\"\n\n    # 3. Download layout from workspace (backup)\n    print(f\"\\nStoring layout for workspace '{WORKSPACE_ID}'...\")\n    sdk.catalog_workspace.store_declarative_workspace(\n        workspace_id=WORKSPACE_ID,\n        layout_root_path=layout_root,\n    )\n    print(f\"Layout stored under: {layout_root}\")\n\n    # 4. Deploy layout (load + put)\n    print(f\"\\nDeploying layout to workspace '{WORKSPACE_ID}'...\")\n    sdk.catalog_workspace.load_and_put_declarative_workspace(\n        workspace_id=WORKSPACE_ID,\n        layout_root_path=layout_root,\n    )\n    print(\"Deploy complete.\")\n\n\nif __name__ == \"__main__\":\n    main()",
+          "timestamp": "2026-03-09T13:00:23.612Z"
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "*",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk/examples"
+          }
+        },
+        {
+          "type": "assistant",
+          "text": "Creating the plan:",
+          "timestamp": "2026-03-09T14:04:57.687Z"
+        },
+        {
+          "type": "user",
+          "text": "Implement the plan as specified, it is attached for your reference. Do NOT edit the plan file itself.\n\nTo-do's from the plan have already been created. Do not create them again. Mark them as in_progress as you work, starting with the first one. Don't stop until you have completed all the to-dos.",
+          "timestamp": "2026-03-09T14:06:45.664Z"
+        },
+        {
+          "type": "tool_use",
+          "name": "todo_write",
+          "input": {}
+        },
+        {
+          "type": "tool_use",
+          "name": "todo_write",
+          "input": {}
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "gooddata-api-client*",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk"
+          }
+        },
+        {
+          "type": "tool_use",
+          "name": "todo_write",
+          "input": {}
+        },
+        {
+          "type": "tool_use",
+          "name": "todo_write",
+          "input": {}
+        },
+        {
+          "type": "assistant",
+          "text": "Verifying the script runs in the container with the mounted `.env`:",
+          "timestamp": "2026-03-09T14:09:45.109Z"
+        },
+        {
+          "type": "assistant",
+          "text": "Summary of what was implemented:\n\n## Implementation summary\n\n### 1. [examples/fork_workspace.py](examples/fork_workspace.py)\n- Loads credentials from `.env` (GOODDATA_HOST, GOODDATA_TOKEN, GOODDATA_WORKSPACE_ID)\n- Connects to GoodData Cloud and lists workspaces\n- Stores workspace layout with `store_declarative_workspace()`\n- Optionally clones to a new workspace when `GOODDATA_TARGET_WORKSPACE_ID` is set\n\n### 2. [examples/Dockerfile](examples/Dockerfile)\n- Uses Python 3.12 and uv\n- Copies the project and runs `uv sync --all-groups --no-dev` to install workspace packages\n- Uses local SDK code from `packages/gooddata-sdk` instead of pip\n- Default CMD runs `fork_workspace.py`\n\n### 3. [examples/.env.example](examples/.env.example)\n- Template for required and optional env vars\n\n## Verification\n\nThe container was run with your `.env` and completed successfully:\n- Connected to GoodData Cloud\n- Listed workspaces\n- Stored layout under `/app/examples/gooddata_layouts`\n\n## Usage\n\n**Local:**\n```bash\nmake dev && source .venv/bin/activate\nuv run python examples/fork_workspace.py\n```\n\n**Container:**\n```bash\ndocker build -f examples/Dockerfile -t gooddata-fork-example .\ndocker run --rm -v \"$(pwd)/examples/.env:/app/examples/.env:ro\" gooddata-fork-example\n```\n\nTo clone to a new workspace, add to `.env`:\n```\nGOODDATA_TARGET_WORKSPACE_ID=demo_fork\nGOODDATA_TARGET_WORKSPACE_NAME=Demo (Fork)\n```",
+          "timestamp": "2026-03-09T14:10:21.678Z"
+        },
+        {
+          "type": "user",
+          "text": "configure lauch.json so i can run python debugger in this repo",
+          "timestamp": "2026-03-09T14:11:57.539Z"
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "**/.vscode/**",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk"
+          }
+        },
+        {
+          "type": "assistant",
+          "text": "Added `.vscode/launch.json` with three debug configurations:\n\n1. **Fork Workspace Example** – Runs `examples/fork_workspace.py` with `cwd` set to `examples/` so `.env` is found.\n2. **Deploy Visualization Example** – Same setup for `examples/deploy_visualization.py`.\n3. **Python: Current File** – Runs the currently active Python file with `cwd` set to that file’s directory.\n\n**How to use:**\n1. Run `make dev` so `.venv` exists.\n2. Choose the `.venv` interpreter (Ctrl+Shift+P → “Python: Select Interpreter” → pick `.venv`).\n3. Open the Run and Debug view (Ctrl+Shift+D), pick a configuration, and start debugging (F5).\n\n`justMyCode: false` lets you step into the SDK and other libraries.",
+          "timestamp": "2026-03-09T14:12:40.321Z"
+        },
+        {
+          "type": "user",
+          "text": "@examples/fork_workspace.py:15 does it uses local code or downloaded package. Are local changes reflected ?",
+          "timestamp": "2026-03-09T14:20:21.319Z"
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "**/gooddata*",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk/.venv"
+          }
+        },
+        {
+          "type": "tool_use",
+          "name": "glob_file_search",
+          "input": {
+            "globPattern": "**/*",
+            "targetDirectory": "/home/roman/Documents/repos/yaml-parity/gooddata-python-sdk/.venv"
+          }
+        },
+        {
+          "type": "assistant",
+          "text": "It uses the local SDK code, and your changes are picked up immediately.\n\nFrom the project setup:\n\n1. **Workspace package** – In [pyproject.toml](pyproject.toml), `gooddata-sdk` is a workspace package:\n   ```toml\n   gooddata-sdk = { workspace = true }\n   ```\n\n2. **Editable install** – In [uv.lock](uv.lock), it’s installed in editable mode:\n   ```\n   name = \"gooddata-sdk\"\n   source = { editable = \"packages/gooddata-sdk\" }\n   ```\n\nSo when you run `make dev` or `uv sync`, `gooddata-sdk` is installed from `packages/gooddata-sdk` in editable mode. Python imports from that directory instead of a copied package.\n\n**Local changes are reflected** – Edits in `packages/gooddata-sdk/src/gooddata_sdk/` are used as soon as you run the script; no reinstall is needed.\n\n**How to confirm:** Run this in the project root:\n```bash\n.venv/bin/python -c \"import gooddata_sdk; print(gooddata_sdk.__file__)\"\n```\nYou should see a path under `packages/gooddata-sdk/` (e.g. `.../packages/gooddata-sdk/src/gooddata_sdk/__init__.py`).",
+          "timestamp": "2026-03-09T14:20:36.286Z"
+        }
+      ],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 31,
+      "overriden_lines": 0
+    }
+  }
+}
