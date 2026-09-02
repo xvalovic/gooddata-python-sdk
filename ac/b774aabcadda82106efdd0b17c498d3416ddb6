@@ -1,0 +1,39 @@
+packages/gooddata-eval/src/gooddata_eval/core/config.py
+  s_7aed2d9a3876e3::t_8258d32e20fdb6 50-51
+  s_7aed2d9a3876e3::t_20ea2d46915394 48-49
+packages/gooddata-eval/src/gooddata_eval/cli/main.py
+  s_7aed2d9a3876e3::t_20ea2d46915394 102-108,444,558
+  s_7aed2d9a3876e3::t_2682ec498fc149 340-341
+  s_7aed2d9a3876e3::t_8258d32e20fdb6 18,109-115,342,445,559
+packages/gooddata-eval/src/gooddata_eval/core/chat/sse_client.py
+  s_7aed2d9a3876e3::t_7c0522f8cceb72 443,457-470
+  s_7aed2d9a3876e3::t_14eba9c20e8fbf 66-68,95-98,100,102,109-114,261-263,274,376,395-401
+  s_7aed2d9a3876e3::t_2682ec498fc149 99,101,103-108,115
+  s_7aed2d9a3876e3::t_134bec04e549c0 375,391-394
+  s_7aed2d9a3876e3::t_097849f7cfb2dc 65,69-70,90-94,264-273,275
+  s_7aed2d9a3876e3::t_a0ac244d8680d0 116,419-423,447
+  s_7aed2d9a3876e3::t_d4e032ce77cab7 293-299
+  s_7aed2d9a3876e3::t_14b5c910350f10 276-277,471
+packages/gooddata-eval/tests/test_sse_client.py
+  s_7aed2d9a3876e3::t_6e9210c9a14cde 903-907,911-919,923-925
+  s_7aed2d9a3876e3::t_a4fa3ba260afe7 876,882-883,885,890,897-898,901-902,910,922
+  s_7aed2d9a3876e3::t_1cdb08a238ed91 870-875,877-881,884,886-889
+  s_7aed2d9a3876e3::t_a1309e0cba3baa 891-895,899-900
+  s_7aed2d9a3876e3::t_7292ee45156a7a 896,908-909,920-921
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "acb774aabcadda82106efdd0b17c498d3416ddb6",
+  "prompts": {},
+  "sessions": {
+    "s_7aed2d9a3876e3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf384832-c143-4e21-ab9e-efaa1c64a99c",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
