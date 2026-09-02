@@ -15,7 +15,7 @@ from rich.console import Console
 from rich.table import Table
 
 from gooddata_eval.cli.agentic_runner import AGENTIC_TEST_KINDS, run_agentic_items
-from gooddata_eval.core.chat.sse_client import ChatClient
+from gooddata_eval.core.chat.sse_client import ChatClient, set_default_item_timeout, set_default_turn_timeout
 from gooddata_eval.core.config import ReasoningEffort, RunConfig
 from gooddata_eval.core.connection import ConnectionError_, resolve_connection
 from gooddata_eval.core.dataset.from_insights import generate as generate_from_insights
@@ -98,6 +98,20 @@ def _build_parser() -> argparse.ArgumentParser:
         default=1,
         help="Number of items evaluated concurrently (default 1 = sequential). "
         "Increase to load-test the agent under simultaneous requests.",
+    )
+    run.add_argument(
+        "--turn-timeout",
+        dest="turn_timeout",
+        type=float,
+        help="Wall-clock seconds a single agent turn may take before the item is failed and the "
+        "run moves on (or set GOODDATA_EVAL_CHAT_TURN_TIMEOUT_S). Default: uncapped.",
+    )
+    run.add_argument(
+        "--item-timeout",
+        dest="item_timeout",
+        type=float,
+        help="Wall-clock seconds one item may take across ALL its turns before it is failed and "
+        "the run moves on (or set GOODDATA_EVAL_CHAT_ITEM_TIMEOUT_S). Default: uncapped.",
     )
     run.add_argument("--json", dest="json_path", help="Write a JSON report to this path.")
     run.add_argument("--quiet", action="store_true", help="Suppress per-item progress output.")
@@ -323,6 +337,9 @@ def _list_models(host: str, token: str, workspace_id: str | None) -> int:
 
 
 def _run(config: RunConfig) -> int:
+    # Applies to the agentic evaluators' own clients too, which this function never sees.
+    set_default_turn_timeout(config.turn_timeout_s)
+    set_default_item_timeout(config.item_timeout_s)
     if config.log_to_langfuse and config.langfuse_dataset is None:
         print(
             "error: --langfuse requires --langfuse-dataset (local datasets have no Langfuse item ids to link to).",
@@ -424,6 +441,8 @@ def _run(config: RunConfig) -> int:
                     preserve_failed=config.preserve_failed,
                     reasoning_effort=config.reasoning_effort,
                     agent_id=config.agent_id,
+                    turn_timeout_s=config.turn_timeout_s,
+                    item_timeout_s=config.item_timeout_s,
                 ),
                 SummaryClient(host=config.host, token=config.token, workspace_id=config.workspace_id),
             )
@@ -536,6 +555,8 @@ def main(argv: list[str] | None = None) -> int:
             preserve_failed=args.preserve_failed,
             reasoning_effort=args.reasoning_effort,
             agent_id=args.agent_id or os.environ.get("GD_EVAL_AGENT_ID"),
+            turn_timeout_s=args.turn_timeout,
+            item_timeout_s=args.item_timeout,
         )
         return _run(config)
     except (
