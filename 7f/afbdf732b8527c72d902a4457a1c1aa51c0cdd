@@ -1,0 +1,33 @@
+packages/gooddata-eval/src/gooddata_eval/cli/main.py
+  s_5116340325ee8c::t_14be83cdfb45f5 24,228-239,572-580,589-590
+  s_5116340325ee8c::t_8cfcfad010773b 13
+packages/gooddata-eval/tests/test_review_sheet.py
+  s_5116340325ee8c::t_a74ef18e4afedc 1-73,75-83,85,87-91,93
+  s_5116340325ee8c::t_8da9d7e30e4552 74,84,86,92
+.gitignore
+  s_5116340325ee8c::t_dd2939e3ee0c60 6
+packages/gooddata-eval/pyproject.toml
+  s_5116340325ee8c::t_14be83cdfb45f5 34
+packages/gooddata-eval/tox.ini
+  s_5116340325ee8c::t_a74ef18e4afedc 10
+packages/gooddata-eval/src/gooddata_eval/core/dataset/review_sheet.py
+  s_5116340325ee8c::t_14be83cdfb45f5 1-100
+packages/gooddata-eval/README.md
+  s_5116340325ee8c::t_1f837ea4c99a20 21,241,309-325,438-464
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "7fafbdf732b8527c72d902a4457a1c1aa51c0cdd",
+  "prompts": {},
+  "sessions": {
+    "s_5116340325ee8c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "013e2a6c-982a-4245-a96a-df4513e83807",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
