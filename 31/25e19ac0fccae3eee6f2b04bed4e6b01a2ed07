@@ -1,0 +1,43 @@
+packages/gooddata-eval/src/gooddata_eval/core/reporting/html_report.py
+  s_5aaed0cf30421f::t_1a23b6d96aedc4 1-108
+packages/gooddata-eval/tests/test_html_report.py
+  s_5aaed0cf30421f::t_692e1649234bc8 27-32
+  s_5aaed0cf30421f::t_0a4fa35c276e8d 92-93
+  s_5aaed0cf30421f::t_1ecdb6c86a2e49 1-26,33-91,94-116
+packages/gooddata-eval/src/gooddata_eval/core/reporting/report_template.html
+  s_5aaed0cf30421f::t_66895e5ac8a28a 34-35
+  s_5aaed0cf30421f::t_1cc0784a21840a 119
+  s_5aaed0cf30421f::t_a8740561832197 1-33,37-39,41-118,120-373
+  s_5aaed0cf30421f::t_5ac35ac78fb984 36
+  s_5aaed0cf30421f::t_37da7e0af9b293 40
+packages/gooddata-eval/src/gooddata_eval/cli/main.py
+  s_5aaed0cf30421f::t_dbd6f85f4484ed 144-159
+  s_5aaed0cf30421f::t_51ebfe4767622f 25
+  s_5aaed0cf30421f::t_c61ad77ee09441 26
+  s_5aaed0cf30421f::t_ed159f9131a934 467-476
+  s_5aaed0cf30421f::t_25b38021568234 504-505
+  s_5aaed0cf30421f::t_bb8ae7220bfbb3 486-490
+  s_5aaed0cf30421f::t_35c425bcf0030f 103-114
+packages/gooddata-eval/README.md
+  s_5aaed0cf30421f::t_b1e260820ed91d 19
+  s_5aaed0cf30421f::t_6d248c51c59b54 170-214
+  s_5aaed0cf30421f::t_60c208bbbcf8c7 138-139
+packages/gooddata-eval/src/gooddata_eval/core/config.py
+  s_5aaed0cf30421f::t_879dacc631fc90 42-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "3125e19ac0fccae3eee6f2b04bed4e6b01a2ed07",
+  "prompts": {},
+  "sessions": {
+    "s_5aaed0cf30421f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a1115bfb-c2d3-4d43-a360-3263d5bbbe69",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
