@@ -1,0 +1,26 @@
+packages/gooddata-eval/tests/test_agentic_langfuse.py
+  s_5116340325ee8c::t_8fb27225967e14 1-2,4-6
+  s_5116340325ee8c::t_1006f9b4be2383 3,7-55
+packages/gooddata-eval/src/gooddata_eval/core/agentic/visualization.py
+  s_5116340325ee8c::t_970f58ad8e5b9c 456,482-484,486-494
+packages/gooddata-eval/README.md
+  s_5116340325ee8c::t_a34a919deae2b4 525-556
+packages/gooddata-eval/src/gooddata_eval/core/agentic/_langfuse.py
+  s_5116340325ee8c::t_975cead7a21f5a 135-159,353-386
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "5184be1bd2fe7eb49cb5a9b1cec0d86dd8472525",
+  "prompts": {},
+  "sessions": {
+    "s_5116340325ee8c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "013e2a6c-982a-4245-a96a-df4513e83807",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
