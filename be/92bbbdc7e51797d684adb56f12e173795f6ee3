@@ -1,0 +1,19 @@
+packages/gooddata-eval/src/gooddata_eval/core/reporting/report_template.html
+  s_5aaed0cf30421f::t_82ecc76a057563 361-385
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "be92bbbdc7e51797d684adb56f12e173795f6ee3",
+  "prompts": {},
+  "sessions": {
+    "s_5aaed0cf30421f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a1115bfb-c2d3-4d43-a360-3263d5bbbe69",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
