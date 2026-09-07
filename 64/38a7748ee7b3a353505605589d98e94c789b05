@@ -1,0 +1,26 @@
+packages/gooddata-eval/src/gooddata_eval/core/dataset/langfuse_source.py
+  s_5116340325ee8c::t_67f481ba8aa369 2,16,140-187
+packages/gooddata-eval/src/gooddata_eval/cli/main.py
+  s_5116340325ee8c::t_67f481ba8aa369 23,249-264,606-621,632-633
+packages/gooddata-eval/tests/test_langfuse_source.py
+  s_5116340325ee8c::t_8632e7bf310837 5-10,193
+  s_5116340325ee8c::t_821fdb9f966e7f 111-192,194-225
+packages/gooddata-eval/README.md
+  s_5116340325ee8c::t_c4f9277b550873 22,487-524
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "6438a7748ee7b3a353505605589d98e94c789b05",
+  "prompts": {},
+  "sessions": {
+    "s_5116340325ee8c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "013e2a6c-982a-4245-a96a-df4513e83807",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
