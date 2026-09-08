@@ -1,0 +1,19 @@
+packages/gooddata-eval/src/gooddata_eval/cli/main.py
+  s_f310fe6811198f::t_6d2e83f3ad1711 13,18,21,103-116,175-227,369-371,473-474,553-569,581-583,605-606,616-618
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "d13a49c53636c2aa15d7db08101a8a8d8c6c60c1",
+  "prompts": {},
+  "sessions": {
+    "s_f310fe6811198f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c336e86e-901d-41ab-a960-e31d84194f55",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
