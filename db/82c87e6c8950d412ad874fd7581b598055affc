@@ -1,0 +1,506 @@
+packages/gooddata-pipelines/src/gooddata_pipelines/ldm_extension/input_processor.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 47,154,193,237,262,265,274,278,281,286,288-289,291,303,337,359,362,371,377
+packages/gooddata-pipelines/tests/provisioning/test_provisioning.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 21-22,99
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/utils/exceptions.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 11,21,38,41,44,48,53,56,60,64,66,68-69
+gooddata-api-client/gooddata_api_client/model/metric_permissions_for_assignee_rule.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 35,38,329
+packages/gooddata-eval/tests/test_reporting.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 2-3,13,198-444
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/entities/workspaces/models.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 15
+.claude/skills/api-client-regen/SKILL.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-65
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/summary.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 18-23,30,81-104,106-107,110-111,114-115,117-118,122-137
+  s_7aed2d9a3876e3::t_e3b867ace53eb9 138
+gooddata-api-client/gooddata_api_client/configuration.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 384
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/provisioning.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 6,38,45,64,89,92,95,119,127,142,144
+packages/gooddata-eval/tests/test_summary_evaluator.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,9-16,97-192
+packages/gooddata-pipelines/src/gooddata_pipelines/backup_and_restore/storage/s3_storage.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 34,42,48,53,65,77,79,95
+packages/gooddata-eval/tests/test_chat_render.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-118
+scripts/conventional_commit_gitlint_rule.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 2-5,10-11,69-172
+  s_7aed2d9a3876e3::t_a48e62c8152c6d 173-174
+packages/gooddata-eval/src/gooddata_eval/core/timing.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-74
+gooddata-api-client/gooddata_api_client/model/fact_permissions_for_assignee_rule.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-334
+packages/gooddata-eval/tests/test_langfuse_source.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 5-10,105-117,124-216
+packages/gooddata-pipelines/tests/provisioning/entities/workspaces/test_workspace.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 8-9
+  s_7aed2d9a3876e3::t_09350d6a36365f 10
+packages/gooddata-eval/tests/test_agentic_alert_skill.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 3,7,11,13,41-54,68-102,320,324,342-343,361-362,465,587-589,635,668,690-691,710,731-732,737-1000
+gooddata-api-client/gooddata_api_client/model/attribute_permissions.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-292
+packages/gooddata-eval/tests/test_langfuse_env.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-70
+packages/gooddata-dbt/pyproject.toml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,13,15-16,18,39-40
+gooddata-api-client/docs/AttributePermissionsForAssigneeRuleAllOf.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-12
+gooddata-api-client/docs/AttributePermissionsForAssignee.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-14
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/_maql.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-103
+packages/gooddata-eval/tests/test_langfuse_client.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-379
+packages/gooddata-eval/src/gooddata_eval/core/models.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 13-14,278-279,292-354,369-377,409-412
+packages/gooddata-eval/tests/test_runner.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,7,125,373-429
+packages/gooddata-flexconnect/CLAUDE.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1
+gooddata-api-client/gooddata_api_client/model/attribute_permissions_for_assignee_rule.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-334
+packages/gooddata-eval/src/gooddata_eval/core/agentic/guardrail.py
+  s_7aed2d9a3876e3::t_355729b4c39c93 26,287
+  s_7aed2d9a3876e3::t_45c322d82f3b51 8-17,20-25,27,73-75,87-125,143,148,156,162-169,178,198,207,221-242,244-266,268-276,278-286,288-291,298-300,303-304,308
+packages/gooddata-eval/src/gooddata_eval/core/reporting/json_report.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 9,19-25,40-41,44-50,54-62
+packages/gooddata-pipelines/tests/provisioning/entities/workspaces/test_workspace_data_filters.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 18-20,42,47,49,52,70,73,109-110,128-129,140-141,147,153,157
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/_llm_judge.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,10-125,148,159-167,172-199,207-228,230-311
+gooddata-api-client/gooddata_api_client/models/__init__.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 93-98,365-368,1131-1134,1148-1149
+packages/gooddata-pipelines/tests/test_ldm_extension/test_input_validator.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 87
+gooddata-api-client/docs/FactPermissionsAssignment.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-13
+packages/gooddata-eval/AGENTS.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-114
+CLAUDE.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-29
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/generic/config.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,46,67-68
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/entities/users/permissions.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 20,23,35,41,48,58,60,63,96,109,115,142,157,167,174
+gooddata-api-client/gooddata_api_client/model/metric_permissions_for_assignee.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 35,38,329
+packages/gooddata-flight-server/AGENTS.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-88
+packages/gooddata-eval/src/gooddata_eval/core/dataset/langfuse_source.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 11-12,15,19,24-25,29,42-43,45-46,48-58,62-94,109,117
+packages/gooddata-eval/src/gooddata_eval/core/agentic/conversation.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 9,12-22,25,29,34,70-84,92-93,101-120,158-165,170-193,218,260,378-391,419-422,437-442,455-456,465-475,499-500,513-516,536,541,560,571,584-597,601-654,666-670,676-678
+gooddata-api-client/gooddata_api_client/model/fact_permissions_for_assignee.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-334
+.gitlint
+  s_7aed2d9a3876e3::t_45c322d82f3b51 10,19-21
+packages/gooddata-eval/src/gooddata_eval/core/langfuse/otlp.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-164
+gooddata-api-client/docs/ActionsApi.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1026,1037,1072,3788,3799,3834,6003,6014,6049,6648,6659,6674-6676,6681,6693,6718,6729,6744-6746,6751,6763
+gooddata-api-client/gooddata_api_client/model/permissions_for_assignee_rule.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 35,38,329
+packages/gooddata-pipelines/tests/utils/test_rate_limiter.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,174-175
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/entities/user_data_filters/user_data_filters.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 28,77,83,85,94,98,101,107-108,127,131,136-137,146,158,162-165,171,173,175
+packages/gooddata-pipelines/src/gooddata_pipelines/backup_and_restore/base_manager.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 5,14-16,55,59,69
+gooddata-api-client/gooddata_api_client/model/permissions_for_assignee.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 35,38,329
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/guardrail.py
+  s_7aed2d9a3876e3::t_355729b4c39c93 52
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,40-42,47-51,53-60
+packages/gooddata-dbt/CLAUDE.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1
+packages/gooddata-pipelines/src/gooddata_pipelines/backup_and_restore/backup_manager.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 98,103,120,128,132,170,181,185,187,191,195,197,228,255,346,348
+.github/workflows/build-release.yaml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 51-53
+.github/workflows/dev-release.yaml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 40-42
+packages/gooddata-pipelines/tests/provisioning/entities/users/test_permissions.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 18-24,37,40,42,64,102-105,144,162,261,278,384,386-392,394-395,427-428,431,436,446,450,465-466,476
+packages/gooddata-pipelines/tests/test_ldm_extension/test_models/test_custom_data_object.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 11,67,74,81,84,175,182,189
+packages/gooddata-eval/tests/test_langfuse_experiment.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-206
+packages/gooddata-flexconnect/pyproject.toml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,32-33,36,53,59-60
+packages/gooddata-pipelines/README.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 40-43,56-61
+packages/tests-support/AGENTS.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-98
+packages/gooddata-eval/tests/test_langfuse_sink.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 2-6,13-14,60-64,86-98,101-141,143-152,154-161,163-165,168-171,173,175-176,179-181,183-212,215-216,219-251
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/entities/users/models/user_groups.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 21
+gooddata-api-client/gooddata_api_client/model/label_permissions_assignment.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-275
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/alert_skill.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 9,75-81,154-156
+packages/gooddata-eval/src/gooddata_eval/core/runner.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 42-78,82-87,127-135,142-143,177,188-190,197,211-218
+  s_7aed2d9a3876e3::t_2fb2a707c11394 219
+packages/gooddata-pipelines/tests/backup_and_restore/test_backup.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 26-27,85,91,130,212-214,279,302-303,323-324,350,354-355
+packages/gooddata-sdk/README.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 17
+gooddata-api-client/.openapi-generator/FILES
+  s_7aed2d9a3876e3::t_45c322d82f3b51 102-107,417-420,1205-1208,1225-1226,1785-1790,2057-2060,2823-2826,2840-2841
+packages/gooddata-eval/tests/test_agentic_guardrail.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 3-4,17-54,67-69,71,85,87,102,105,120,122,137,139,162-166,169,189-238
+packages/gooddata-eval/tests/test_agentic_langfuse_trace.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 3-4,7-37,58-542
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/metric_skill.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,6,32-40,51-52,71-73
+packages/gooddata-pipelines/src/gooddata_pipelines/utils/decorators.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 24
+gooddata-api-client/gooddata_api_client/model/manage_attribute_permissions_request_inner.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 36-37,40-41,337-338
+packages/gooddata-eval/src/gooddata_eval/core/langfuse/sink.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 2,8,11-12,19-20,22,52,61-62,69-121,123-147,150,159-160,162-166,175-181,183-184
+gooddata-api-client/docs/AttributePermissions.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-14
+packages/gooddata-pipelines/AGENTS.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-96
+docs/layouts/index.redir
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4-6
+.github/workflows/rw-python-tests.yaml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 38,40,58,60,75-77
+gooddata-api-client/gooddata_api_client/model/fact_permissions_assignment.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-275
+packages/gooddata-pipelines/src/gooddata_pipelines/ldm_extension/input_validator.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 41-42,62,72,74-76,80,92,94,113,152,160,168-170
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/entities/workspaces/workspace_data_filters.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 38,42,48,52,54,67,77,95-96,104-106,128,158,201-203,219,248,250,252
+packages/gooddata-pipelines/tests/test_ldm_extension/test_input_processor.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 8,11,16,37,43,65,71,84,94
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/entities/workspaces/workspace_data_validator.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 56,67,84,101-105,113,132,134,147,165,167,172
+packages/gooddata-pipelines/tests/panther/test_sdk_wrapper.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 8,17,42,69
+packages/gooddata-pipelines/pyproject.toml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,14,24-25
+gooddata-api-client/gooddata_api_client/model/attribute_permissions_for_assignee.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-334
+packages/gooddata-sdk/src/gooddata_sdk/compute/model/execution.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 23
+gooddata-api-client/gooddata_api_client/model/attribute_permissions_for_assignee_rule_all_of.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-270
+packages/gooddata-eval/src/gooddata_eval/core/agentic/_trace_linker.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-321
+packages/gooddata-eval/src/gooddata_eval/core/config.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,9-31
+  s_7aed2d9a3876e3::t_55671bb62b385e 32
+packages/gooddata-pandas/pyproject.toml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,32,53,58-59,62-65
+packages/gooddata-flexconnect/AGENTS.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-83
+gooddata-api-client/gooddata_api_client/api/actions_api.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 39,69,91,97-98,768,2645,4366,4882,4887,4906-4907,4916,4942,4947,4966-4967,4976,8951,11638,14140,14865,14873,14879,14947-14948,14955,14963,14969,15037-15038
+gooddata-api-client/gooddata_api_client/model/fact_permissions.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-292
+packages/gooddata-pipelines/tests/provisioning/entities/workspaces/test_workspace_data_parser.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 9-10
+  s_7aed2d9a3876e3::t_eccaa6c626703d 11
+gooddata-api-client/gooddata_api_client/model/label_permissions_for_assignee_rule.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-334
+packages/tests-support/CLAUDE.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1
+packages/gooddata-pipelines/src/gooddata_pipelines/utils/file_utils.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 38,57
+packages/gooddata-fdw/CLAUDE.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1
+gooddata-api-client/README.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 7,1530-1535,1802-1805,2568-2571,2585-2586
+packages/gooddata-pipelines/src/gooddata_pipelines/api/gooddata_api.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 41,53,65,116,148,159,162,167,169,184,213,248,270
+gooddata-api-client/docs/FactPermissionsForAssignee.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-14
+packages/gooddata-eval/tests/test_langfuse_observations.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-264
+gooddata-api-client/docs/LabelPermissionsAssignment.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-13
+packages/gooddata-eval/tests/test_agentic_metric_skill.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 5,22-74,181-183,297,312,329,337,353-383,393,418,464,466,485,504,523,528,545-546,564,572,613,616,631,645,669,677,698-768
+packages/gooddata-eval/src/gooddata_eval/core/agentic/general_question.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 6,9-18,21-29,76-82,94-147,159,166,172,182,189-196,205,225-226,234,245,249-250,252-294,296-307,309-325,334-337,340-341,345-346
+gooddata-api-client/gooddata_api_client/api_client.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 80
+packages/gooddata-eval/tests/test_trace_linker.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-582
+gooddata-api-client/docs/ManageFactPermissionsRequestInner.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-14
+packages/gooddata-eval/tests/test_agentic_kda_skill.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,79-138,292,295,318,321,345,348,371,374,395,400,422,428,446,449,467,473,488-564,572,583,607,613,640,646,672,678,698,704,724,737,756,759,774,777,793,799,816,819,839,854,882,902,921,953,956,970,973,990,997,1022,1028,1056,1062,1085,1091,1107,1112,1135,1140,1145,1168,1177,1186
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/entities/users/user_groups.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 18,31,34,54-55,58,67,99,101,107,110,114,119,125,132,138,151,157,160,163,181
+packages/gooddata-eval/tests/test_sse_client.py
+  s_7aed2d9a3876e3::t_1e53f7130703c9 926-927
+  s_7aed2d9a3876e3::t_45c322d82f3b51 928-979
+packages/gooddata-eval/src/gooddata_eval/core/langfuse/observations.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-125
+packages/gooddata-eval/tests/test_cli.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 10,16,819-1004
+packages/gooddata-eval/pyproject.toml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,14,33,46-47
+packages/gooddata-sdk/pyproject.toml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,29,32-33,57,65-66,69-73
+packages/gooddata-pipelines/src/gooddata_pipelines/backup_and_restore/storage/azure_storage.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 6,11,26-27,31,36,38,47,49,53,55,84,87,91,100,107
+packages/gooddata-pipelines/src/gooddata_pipelines/ldm_extension/ldm_extension_manager.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 46,68,70,75,88,90,93,106,147,165,188,190,205,207,211-212,214,221,234-238,308-309
+packages/gooddata-pipelines/src/gooddata_pipelines/backup_and_restore/backup_input_processor.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 46-48,64,77-78,96,114,125,140
+packages/gooddata-eval/tests/_fake_langfuse.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-273
+packages/gooddata-pipelines/src/gooddata_pipelines/ldm_extension/models/custom_data_object.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 95,99,103,124,126,161
+packages/gooddata-pipelines/tests/test_ldm_extension/test_merge_ldm.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 10-16,21-22,35,37,50
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/general_question.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,18-21,29-31,36-37,39-44
+  s_7aed2d9a3876e3::t_355729b4c39c93 38
+Makefile
+  s_7aed2d9a3876e3::t_45c322d82f3b51 5-10,34-35,39,108-110,114-116,120-122
+packages/gooddata-eval/tests/test_connection.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 19-23
+packages/gooddata-eval/src/gooddata_eval/cli/main.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 19,30,102-121,284-326,466,547,658-659
+gooddata-api-client/gooddata_api_client/model/label_permissions_for_assignee.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-334
+schemas/gooddata-api-client.json
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1964-2056,10622-10714,32291,32322-32323,32342,32345,32356,32363,32366,32377,42917,42920,42969,45791,45794,45843,45970,45973,46022
+gooddata-api-client/docs/ManageLabelPermissionsRequestInner.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-14
+gooddata-api-client/docs/LabelPermissionsForAssigneeRule.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-14
+.github/workflows/staging-tests.yaml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 53,55
+schemas/gooddata-metadata-client.json
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1123-1215,7319-7411,27759,27790-27791,27810,27813,27824,27831,27834,27845,32747,32750,32799,33186,33189,33238,33365,33368,33417
+packages/gooddata-flight-server/CLAUDE.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1
+packages/gooddata-eval/src/gooddata_eval/core/reporting/console.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 7-16,42-46,54-59,61-62,66-72,74-76,78
+packages/gooddata-pipelines/tests/test_ldm_extension/test_models/test_analytical_object.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 8,21,26
+packages/gooddata-eval/src/gooddata_eval/core/agentic/_catalog.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 5-39,66-69,88-89
+gooddata-api-client/docs/AttributePermissionsForAssigneeRule.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-14
+packages/gooddata-eval/tests/test_agentic_general_question.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 3-6,16,18-98,114,116,127-145,149,151,161-162,166-167,169,179-180,184,186,200-238,240,242,259,264-265,267,269,286,288-730
+gooddata-api-client/docs/AttributePermissionsAssignment.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-13
+packages/gooddata-eval/tests/test_langfuse_otlp.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-197
+packages/gooddata-fdw/docs/requirements.txt
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1
+packages/gooddata-pipelines/src/gooddata_pipelines/backup_and_restore/csv_reader.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 17,24
+packages/gooddata-pipelines/src/gooddata_pipelines/utils/rate_limiter.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4-6,56
+packages/gooddata-pipelines/src/gooddata_pipelines/backup_and_restore/storage/local_storage.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 26,33,36
+packages/gooddata-pandas/docs/requirements.txt
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1
+docs/config/production/params.toml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 15,19-21
+  s_7aed2d9a3876e3::t_cee01b9c5886ee 22
+packages/gooddata-eval/tests/test_text_evaluators.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4-5,21-30,74-90,102-132
+packages/gooddata-eval/CLAUDE.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1
+packages/gooddata-eval/tests/test_models.py
+  s_7aed2d9a3876e3::t_1e53f7130703c9 141-142
+  s_7aed2d9a3876e3::t_45c322d82f3b51 143-167
+packages/gooddata-eval/tests/test_maql_normalize.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-106
+packages/gooddata-flight-server/pyproject.toml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,35,38,55,63-64
+.github/workflows/bump-version.yaml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 39-41
+gooddata-api-client/gooddata_api_client/model/manage_fact_permissions_request_inner.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-340
+packages/gooddata-pandas/CLAUDE.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1
+packages/gooddata-eval/src/gooddata_eval/core/agentic/_langfuse.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 8,15-28,38-46,59-80,89-103,130-138,152-153,163-200,207-208,210-229,233,236-240,242-245,248-251,256-258,260,267,272-332,342-365,367-374,376-377,379,381,383-452
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/_text_utils.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,9-10
+packages/gooddata-pipelines/tests/provisioning/entities/users/test_user_groups.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 11,19,37,55
+gooddata-api-client/gooddata_api_client/model/attribute_permissions_assignment.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-275
+packages/gooddata-eval/tests/test_fake_langfuse.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-140
+pyproject.toml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,59,63,66,70,76,98,102,154-155,171
+packages/gooddata-pipelines/src/gooddata_pipelines/backup_and_restore/models/storage.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 79,111,205,230,237-242
+packages/gooddata-pipelines/tests/backup_and_restore/test_restore.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 22,98,117,127,129-130,136-137,139,149,151,158,160,166,170,178,180,199-202,259-260
+packages/gooddata-pipelines/tests/utils/test_decorators.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 37
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/entities/users/users.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 58,73,76,105,136,164-165,174,177,180,194
+packages/gooddata-pipelines/tests/backup_and_restore/test_backup_input_processor.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 24,67,72-73,124,143,154
+project_common.mk
+  s_7aed2d9a3876e3::t_45c322d82f3b51 74-75,77-78
+packages/gooddata-eval/README.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 119-120,133-134,137-144,153-154,160-214,236-299,605-607
+  s_7aed2d9a3876e3::t_0184a4e4627349 608
+packages/gooddata-sdk/src/gooddata_sdk/catalog/workspace/entity_model/content_objects/dataset.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 93-98
+packages/gooddata-pipelines/src/gooddata_pipelines/backup_and_restore/restore_manager.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 56,63,76-78,81,93,102,104,110,112,115,123-124,128,130,133,150-151,162-165,179,181,188,191,194,197
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/entities/workspaces/workspace.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 31,36,48,64,87,98,101,141,150,156,164,178,180,183,186,190,200,203,206,212,222,235,241,246,251,254,282
+gooddata-api-client/docs/AttributePermissionsForAssigneeAllOf.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-12
+gooddata-api-client/gooddata_api_client/model/declarative_analytical_dashboard_permission_for_assignee_rule.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 35,38,329
+packages/gooddata-eval/src/gooddata_eval/core/agentic/kda_skill.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 10-19,22-30,182-183,254-269,280,288,290,327-328,364,385,393,408-448,450-470,472-487,501-503,506-507,511
+packages/gooddata-eval/src/gooddata_eval/core/agentic/visualization.py
+  s_7aed2d9a3876e3::t_355729b4c39c93 427
+  s_7aed2d9a3876e3::t_45c322d82f3b51 13-22,32,37,197-202,211-212,217,294,328,338,353-408,420-426,428-429,468-470,473-474,478
+gooddata-api-client/docs/LabelPermissionsForAssignee.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-14
+AGENTS.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-315
+packages/gooddata-eval/tests/test_agentic_search_tool.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 141-180,210,246
+packages/gooddata-eval/src/gooddata_eval/core/agentic/metric_skill.py
+  s_7aed2d9a3876e3::t_b74e41fa2dc860 33
+  s_7aed2d9a3876e3::t_355729b4c39c93 501
+  s_7aed2d9a3876e3::t_45c322d82f3b51 8,14-23,26-32,34-35,51,54,67-69,162,253,261,263-264,267-272,280-283,287-288,293-297,301-302,304-307,309-314,330,397,418,429,444-464,466-486,488-500,502,515-518,521-522,526-527
+gooddata-api-client/docs/LabelPermissions.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-14
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/entities/workspaces/workspace_data_parser.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 25-26,36,48,72,87-90,101-102
+packages/gooddata-pipelines/tests/conftest.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 16-17
+.gitignore
+  s_7aed2d9a3876e3::t_45c322d82f3b51 40-46
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/utils/utils.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 16,37-38,42,57
+packages/gooddata-pipelines/src/gooddata_pipelines/provisioning/entities/users/models/permissions.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 50,64,80,94,104,107-108,111-116,122,151
+packages/gooddata-eval/src/gooddata_eval/core/langfuse/_env.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-39
+gooddata-api-client/gooddata_api_client/__init__.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 14
+packages/gooddata-dbt/AGENTS.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-87
+packages/gooddata-eval/tests/conftest.py
+  s_7aed2d9a3876e3::t_7fdbc9ddec70e0 35
+  s_7aed2d9a3876e3::t_b74e41fa2dc860 36
+  s_7aed2d9a3876e3::t_45c322d82f3b51 6,37-45
+  s_7aed2d9a3876e3::t_05c8102edca2ed 7
+packages/gooddata-pipelines/src/gooddata_pipelines/backup_and_restore/constants.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 36
+packages/gooddata-eval/tests/test_agentic_runner.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 3-5,9-16,19,232-768
+gooddata-api-client/docs/PermissionsApi.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 32,43,78,233,244,279,564,575,610,849,860,875-877,882,894,919,930,945-947,952,964
+packages/gooddata-pipelines/src/gooddata_pipelines/backup_and_restore/storage/base_storage.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 24-25
+packages/gooddata-sdk/AGENTS.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-126
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/__init__.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 23-24,26-31,36,42,68-70
+packages/gooddata-eval/src/gooddata_eval/core/chat/sse_client.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 38-51,179-180,208-210,216-221,262-268,272-273,468-470,476-479,526
+packages/gooddata-eval/tests/test_llm_judge.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 5-13,16-20,23-42,44-49,53-56,72-616
+packages/gooddata-pipelines/tests/provisioning/entities/workspaces/test_workspace_data_validator.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 61,104,122,143,191,195
+packages/gooddata-pandas/AGENTS.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-93
+.claude/skills/commit/SKILL.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-65
+gooddata-api-client/gooddata_api_client/model/manage_label_permissions_request_inner.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-340
+packages/gooddata-fdw/AGENTS.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-104
+gooddata-api-client/docs/FactPermissions.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-14
+packages/gooddata-eval/src/gooddata_eval/core/_output.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-18
+packages/gooddata-eval/src/gooddata_eval/core/agentic/search_tool.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 8-16,19-25,68-69,114-115,137-138,159,179,187,201-202,204-240,242-252,263-265,268-269,273
+packages/gooddata-eval/tests/test_timing.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-93
+packages/gooddata-pipelines/tests/test_ldm_extension/test_ldm_extension_manager.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 18-25,48,52,57,62,80-83,90,103-106,112,117,123,136-139,205,207,218,231,233,251,253,263,283
+gooddata-api-client/setup.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 19
+packages/gooddata-eval/src/gooddata_eval/core/agentic/alert_skill.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 14-24,27-32,34,131-218,350-353,358,363-381,405,444-445,458-459,523-551,576-580,591-592,676-681,691-692,715-716,762-763,775,796,807,822-871,874-889,891,899-901,907-909,912-913,917
+  s_7aed2d9a3876e3::t_b74e41fa2dc860 33
+  s_7aed2d9a3876e3::t_355729b4c39c93 890
+gooddata-api-client/gooddata_api_client/model/label_permissions.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-292
+packages/gooddata-eval/tests/test_langfuse_e2e_fake_server.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-376
+packages/gooddata-fdw/pyproject.toml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 4,29,47,52-53,55,57
+.pre-commit-config.yaml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 8-12,15,23,42,44
+packages/gooddata-eval/src/gooddata_eval/core/langfuse/experiment.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-156
+packages/gooddata-pipelines/CLAUDE.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1
+packages/gooddata-eval/src/gooddata_eval/cli/agentic_runner.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 6,8,12,33,51-87,130,147,206,245-278,293,295-303,308-313,315,331-341,356-357,365-366,371-375,385-457
+packages/gooddata-eval/src/gooddata_eval/core/langfuse/client.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-205
+packages/gooddata-eval/tests/test_agentic_conversation.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 25-28,104-131,363-605,959,1024
+gooddata-api-client/gooddata_api_client/api/permissions_api.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 25,33-34,37-38,58,223,467,707,712,731-732,741,767,772,791-792,801,1293,1551,1964,2270,2278,2284,2352-2353,2360,2368,2374,2442-2443
+gooddata-api-client/gooddata_api_client/model/attribute_permissions_for_assignee_all_of.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-270
+packages/gooddata-eval/src/gooddata_eval/core/chat/render.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-47
+packages/gooddata-eval/tests/test_agentic_observe_experiment.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-325
+packages/gooddata-pipelines/src/gooddata_pipelines/api/gooddata_api_wrapper.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 50
+.claude/skills/cassette-update/SKILL.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-99
+CONTRIBUTING.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 312-324,328,331,334,337,340-360
+gooddata-api-client/docs/FactPermissionsForAssigneeRule.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1-14
+packages/gooddata-sdk/CLAUDE.md
+  s_7aed2d9a3876e3::t_45c322d82f3b51 1
+.openapi-generator/configs/gooddata-api-client.yaml
+  s_7aed2d9a3876e3::t_45c322d82f3b51 9
+packages/gooddata-pipelines/tests/provisioning/entities/users/test_users.py
+  s_7aed2d9a3876e3::t_45c322d82f3b51 2,8-14,35-38,71,78,93,108,123,140,150-161,163-164,209,213,217,232,288,299
+uv.lock
+  s_7aed2d9a3876e3::t_23d0208425771c 5-6,27,29,31,36,41,43,45,62,64,66,71,77,79,100,108,110,115,122,124,129,136,138,143,150,152,157,159,161,222-340,343,345,347,352,357,359,361,366,368,370,375,380-480,494-652,657,664,666,692-815,825,831-877,882,885,888,890,895,897,899,919,921,923,928,930,932,949,951,953,991,1006,1009,1014,1019,1039-1040,1044,1049-1050,1056,1086,1096-1097,1104,1126-1127,1131-1132,1137,1163,1169-1170,1176,1202,1205,1210-1211,1217,1257-1258,1260,1262,1265-1266,1271,1312-1313,1320,1391,1393,1406,1418-1419,1421,1425,1461,1463,1476,1478-1479,1481,1483,1485-1486,1491,1497,1499,1504,1510,1512,1517,1519,1521,1563,1565,1567,1572,1574,1576,1620-1714,1734-1735,1862,1873,1875,1880,1887,1889,1980,1985-2134,2158,2163,2165,2170,2177,2179,2184,2190,2192,2206-2273,2278,2280,2282,2291-2292,2350,2352,2354,2368,2377,2379,2384,2386,2388,2393-2438,2452,2460,2462,2467,2472-2578,2583,2585,2587,2592,2597,2599,2609,2615,2617,2622,2630,2633,2635,2640,2644,2647,2649,2691,2696,2698,2727,2732,2734,2739,2741,2743,2748,2750,2752,2837-2838,2863,2870,2872,2892-2894,3013-3140,3143-3163,3168,3173,3175,3213,3215-3218,3220,3225,3227,3229,3347,3360,3363,3365,3370,3377,3379,3384,3389,3391,3396-3416,3421,3423,3425,3430,3435,3437,3451,3453,3455,3460,3465,3467,3472,3474,3476,3490,3492,3494,3499,3505,3507,3512,3521,3523,3557-3649
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "db82c87e6c8950d412ad874fd7581b598055affc",
+  "prompts": {},
+  "sessions": {
+    "s_7aed2d9a3876e3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf384832-c143-4e21-ab9e-efaa1c64a99c",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
