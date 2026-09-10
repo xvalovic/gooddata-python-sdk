@@ -1,9 +1,17 @@
 packages/gooddata-eval/src/gooddata_eval/cli/main.py
   s_7aed2d9a3876e3::t_2e26b35e5ac718 240-247
+  s_7aed2d9a3876e3::t_d46cb6c81402eb 240-247
 packages/gooddata-eval/src/gooddata_eval/core/dataset/from_insights.py
   s_7aed2d9a3876e3::t_80711885d26181 822-845,937,940-948,958-960,1171-1177,1196-1207
+  s_7aed2d9a3876e3::t_5a342ceb4a4668 822-845,937,940,948
+  s_7aed2d9a3876e3::t_d46cb6c81402eb 1171-1177,1196-1207
+  s_7aed2d9a3876e3::t_ac4cf7391fab1b 958-960
+  s_7aed2d9a3876e3::t_ff6f7985e277c5 941-947
 packages/gooddata-eval/tests/test_from_insights.py
   s_7aed2d9a3876e3::t_2638353f592c64 10-11,1042-1086
+  s_7aed2d9a3876e3::t_16e84105d96620 10-11,1042-1051,1056-1057,1060-1086
+  s_7aed2d9a3876e3::t_ac4cf7391fab1b 1054-1055
+  s_7aed2d9a3876e3::t_ff6f7985e277c5 1052-1053,1058-1059
 ---
 {
   "schema_version": "authorship/3.0.0",
