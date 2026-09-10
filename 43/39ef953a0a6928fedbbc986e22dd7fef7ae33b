@@ -1,15 +1,28 @@
 packages/gooddata-eval/README.md
   s_7aed2d9a3876e3::t_82c1a9b9ef0206 23,295-296,299-345,361-364,372-373
+  s_7aed2d9a3876e3::t_3d923227fd72a3 23,295-296,299-345,361-364,372-373
 packages/gooddata-eval/src/gooddata_eval/core/dataset/from_insights.py
   s_7aed2d9a3876e3::t_d0aac2672f3b68 32-38,752-758,815-817,819-820,836-838,840,842,865-888,911-930,935,937,941,968-973,992-1003
+  s_7aed2d9a3876e3::t_4401bf131cd092 752-758
+  s_7aed2d9a3876e3::t_ca57bf705ca0aa 872,875
+  s_7aed2d9a3876e3::t_e155ce17ebe25d 815-817,819-820,865-871,873-874,876-888,968-973,992-1003
+  s_7aed2d9a3876e3::t_b6327fadce8c90 921-924,926-927
+  s_7aed2d9a3876e3::t_f46a9dae12feb9 32-38,836-838,840,842,911-920,925,928-930,935,937,941
 packages/gooddata-eval/src/gooddata_eval/core/granularity.py
   s_7aed2d9a3876e3::t_a5f9febb5e56f6 1-65
+  s_7aed2d9a3876e3::t_ca57bf705ca0aa 1-56,60,63
+  s_7aed2d9a3876e3::t_f46a9dae12feb9 57-59,61-62,64-65
 packages/gooddata-eval/src/gooddata_eval/core/scoring.py
   s_7aed2d9a3876e3::t_05ebf259f23210 7,47
+  s_7aed2d9a3876e3::t_ca57bf705ca0aa 7,47
 packages/gooddata-eval/tests/test_from_insights.py
   s_7aed2d9a3876e3::t_6f1395469f4d65 22,1088-1201
+  s_7aed2d9a3876e3::t_99b1022195cbb1 1088-1158
+  s_7aed2d9a3876e3::t_8e3273e8886ef3 22
+  s_7aed2d9a3876e3::t_b135fb84c3705d 1159-1201
 packages/gooddata-eval/tests/test_scoring.py
   s_7aed2d9a3876e3::t_3dd4282b6ee3d1 208-230
+  s_7aed2d9a3876e3::t_d269f0005b2867 208-230
 ---
 {
   "schema_version": "authorship/3.0.0",
