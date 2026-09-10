@@ -1,0 +1,22 @@
+packages/gooddata-eval/src/gooddata_eval/core/chat/sse_client.py
+  s_7aed2d9a3876e3::t_e379cf559a3926 437,439-440
+packages/gooddata-eval/src/gooddata_eval/core/dataset/from_insights.py
+  s_7aed2d9a3876e3::t_e379cf559a3926 981,1055,1167-1168
+  s_7aed2d9a3876e3::t_7908a2e1fe7b19 1062-1065
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b6c3400d7ebe77e34a2d6274f7806d2e4f84a9a1",
+  "prompts": {},
+  "sessions": {
+    "s_7aed2d9a3876e3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf384832-c143-4e21-ab9e-efaa1c64a99c",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
