@@ -1,0 +1,22 @@
+packages/gooddata-eval/tests/test_from_insights.py
+  s_7aed2d9a3876e3::t_2b8e9ea9739428 3-4,7,25,1293-1295
+  s_7aed2d9a3876e3::t_45093d9ab89ff4 1206-1292,1296-1389
+  s_7aed2d9a3876e3::t_a793b655ef2392 1390-1463,1470-1482
+  s_7aed2d9a3876e3::t_b4b5b7c58c8a00 1464-1469
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b107fd90f840d509df4e606a777eb72f8c863b87",
+  "prompts": {},
+  "sessions": {
+    "s_7aed2d9a3876e3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf384832-c143-4e21-ab9e-efaa1c64a99c",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
