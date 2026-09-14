@@ -1,0 +1,69 @@
+packages/gooddata-eval/src/gooddata_eval/core/reporting/html_report.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 1-121
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/general_question.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 7,38
+packages/gooddata-eval/tests/test_agentic_alert_skill.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 694,735
+packages/gooddata-eval/src/gooddata_eval/core/chat/sse_client.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 79-84,97-131,150-154,158,160,164,169,298-314,330-336,412-413,428-440,457-461,487,491,501-514
+  s_7aed2d9a3876e3::t_e2cc8db5885cfb 515
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/guardrail.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 7,35,52
+packages/gooddata-eval/src/gooddata_eval/core/agentic/conversation.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 35,537
+packages/gooddata-eval/tests/test_agentic_metric_skill.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 664,694
+packages/gooddata-eval/tests/test_agentic_visualization.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 324,376
+packages/gooddata-eval/src/gooddata_eval/core/agentic/metric_skill.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 41,512
+packages/gooddata-eval/tests/test_agentic_conversation.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 963,1028
+packages/gooddata-eval/tests/test_models.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 6,8-9,96-140
+  s_7aed2d9a3876e3::t_4dec214b03d3e1 141-142
+packages/gooddata-eval/tests/test_agentic_guardrail.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 157,187
+packages/gooddata-eval/src/gooddata_eval/core/reporting/report_template.html
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 1-452
+packages/gooddata-eval/tests/test_html_report.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 1-133
+packages/gooddata-eval/src/gooddata_eval/core/models.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 205-266
+packages/gooddata-eval/tests/test_sse_client.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 872-927
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/search_tool.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 5,58
+packages/gooddata-eval/src/gooddata_eval/cli/main.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 13,18,34-35,139-152,154-165,195-210,426-428,534-535,602-611,623-627,641-642,650-651,661-663
+packages/gooddata-eval/src/gooddata_eval/core/agentic/visualization.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 46,440
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/visualization.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 12,208
+packages/gooddata-eval/README.md
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 19,21-22,151-152,313-365,386-522,593-594,603-604,611
+packages/gooddata-eval/src/gooddata_eval/core/agentic/alert_skill.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 41,901
+packages/gooddata-eval/src/gooddata_eval/core/config.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 87-88,95-98
+packages/gooddata-eval/src/gooddata_eval/core/agentic/guardrail.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 34,298
+packages/gooddata-eval/tests/conftest.py
+  s_7aed2d9a3876e3::t_9ad3bf338924bf 14-36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1071fd61a9b9c6ebf075e5140e2e0e4dc0f59368",
+  "prompts": {},
+  "sessions": {
+    "s_7aed2d9a3876e3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf384832-c143-4e21-ab9e-efaa1c64a99c",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
