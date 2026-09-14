@@ -1,0 +1,30 @@
+packages/gooddata-eval/src/gooddata_eval/core/scoring.py
+  s_7aed2d9a3876e3::t_eb31596f5abd75 7,47
+packages/gooddata-eval/src/gooddata_eval/core/dataset/from_insights.py
+  s_7aed2d9a3876e3::t_eb31596f5abd75 1-1366
+packages/gooddata-eval/src/gooddata_eval/cli/main.py
+  s_7aed2d9a3876e3::t_eb31596f5abd75 29,212-285,690-706,720-721
+  s_7aed2d9a3876e3::t_35d16f5d9b079e 722
+packages/gooddata-eval/src/gooddata_eval/core/granularity.py
+  s_7aed2d9a3876e3::t_eb31596f5abd75 1-65
+packages/gooddata-eval/tests/test_from_insights.py
+  s_7aed2d9a3876e3::t_eb31596f5abd75 1-1482
+packages/gooddata-eval/tests/test_scoring.py
+  s_7aed2d9a3876e3::t_eb31596f5abd75 208-230
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c3b2d6f3cebbd26ab1b8dce3a463cb132dbc5882",
+  "prompts": {},
+  "sessions": {
+    "s_7aed2d9a3876e3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf384832-c143-4e21-ab9e-efaa1c64a99c",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
