@@ -1,0 +1,115 @@
+packages/gooddata-eval/tests/test_models.py
+  s_0d3258ca9ec561::t_eabecac5f8602b 168-173
+packages/gooddata-eval/src/gooddata_eval/cli/main.py
+  s_7aed2d9a3876e3::t_35d16f5d9b079e 722
+  s_7aed2d9a3876e3::t_eb31596f5abd75 29,212-285,690-706,720-721
+packages/gooddata-eval/tests/test_agentic_visualization.py
+  s_0d3258ca9ec561::t_6014edc1d1e3ec 312,324-325,367,379-380
+packages/gooddata-eval/tests/test_scoring.py
+  s_0d3258ca9ec561::t_f7afe09e9dd8f7 266-267,270-276
+  s_0d3258ca9ec561::t_51ea0ef6288011 280
+  s_0d3258ca9ec561::t_eabecac5f8602b 279,281-286
+  s_0d3258ca9ec561::t_ae09ba4d59678e 5,10,233-265,268-269,277-278,287-295
+  s_7aed2d9a3876e3::t_eb31596f5abd75 210-232
+packages/gooddata-eval/AGENTS.md
+  s_0d3258ca9ec561::t_b3fc717dba015c 12,30,64-66,69-72,78-163
+  s_0d3258ca9ec561::t_0de9a2f461abfd 67-68,73-77
+  s_0d3258ca9ec561::t_46f970f680596a 193,204-209
+  s_0d3258ca9ec561::t_baa44197b2b91f 164
+  s_0d3258ca9ec561::t_1403ec922cdffd 201-203
+  s_0d3258ca9ec561::t_0645cc6663efda 194-200
+packages/gooddata-eval/src/gooddata_eval/core/dataset/from_insights.py
+  s_0d3258ca9ec561::t_24125aa3efcee0 264
+  s_55fe43aeb995b1::t_738e907a85c83c 43,697
+  s_0d3258ca9ec561::t_86388b8bf70324 277-279
+  s_55fe43aeb995b1::t_268d316ad60ce0 42,890-892
+  s_0d3258ca9ec561::t_059bbc88ebc1b0 396-397,399-403,408,456,465-468,470,520,565-568,596-604
+  s_0d3258ca9ec561::t_6b33738de4b143 32,44-49,196-203,205,210-239,241-242,244-258,262-263,265-276,280-288,293-295,300-309,313,324-333
+  s_7aed2d9a3876e3::t_eb31596f5abd75 1-31,34-41,50-62,67-69,71,73-195,204,259-261,291-292,296-297,299,310-312,321-323,334-336,338-385,387-395,398,409-428,430-455,457-464,469,471-510,512-519,521-536,538-548,550-564,569-590,592-593,595,605-613,615-696,698-703,705-740,742-748,750-799,801-807,809-812,814-834,836-887,889,893-897,903-1185,1187-1265,1267-1283
+  s_0d3258ca9ec561::t_a53e47d9300c7d 289-290,404-407
+  s_0d3258ca9ec561::t_65a11fa36dfd39 240,337,549,749
+  s_0d3258ca9ec561::t_aff61e3be90c60 206-209,243
+  s_55fe43aeb995b1::t_f542c63e2c6feb 33
+  s_0d3258ca9ec561::t_d6099d30811a58 898-902
+  s_55fe43aeb995b1::t_abdd8609d82216 386,429,511,537,591,594,614,704,741,800,808,813,835,888
+  s_0d3258ca9ec561::t_1403ec922cdffd 314-320
+  s_0d3258ca9ec561::t_4d8a61d4db5888 63-66,70,72,298
+  s_0d3258ca9ec561::t_f3763f34de1269 1186,1266
+packages/gooddata-eval/src/gooddata_eval/core/models.py
+  s_0d3258ca9ec561::t_d6099d30811a58 55-57
+  s_0d3258ca9ec561::t_e13e04895963f6 33-37,44-47
+  s_0d3258ca9ec561::t_50d83fcdce56b2 48
+packages/gooddata-eval/src/gooddata_eval/core/scoring.py
+  s_55fe43aeb995b1::t_488b1d6dca3392 5,33
+  s_55fe43aeb995b1::t_dd9f4c904ebed0 34-39,45-46,55,93,109,214,218
+  s_7aed2d9a3876e3::t_eb31596f5abd75 8
+  s_0d3258ca9ec561::t_73e1645915800e 153,155-161,169
+  s_0d3258ca9ec561::t_d6099d30811a58 162-167,170
+  s_0d3258ca9ec561::t_c4eb820f801b13 118-152,154,168,171-172
+packages/gooddata-eval/tests/test_from_insights.py
+  s_0d3258ca9ec561::t_4d8a61d4db5888 73,347
+  s_0d3258ca9ec561::t_6014edc1d1e3ec 575,873
+  s_55fe43aeb995b1::t_3fbffaaaf6cc65 175-187,189-201,203-209,211-221
+  s_0d3258ca9ec561::t_44730410eeb5bb 870,882-884,889,907,946,962-963,966,1125,1132,1163-1164,1167-1168
+  s_0d3258ca9ec561::t_eabecac5f8602b 913-920,922-931
+  s_0d3258ca9ec561::t_1bff133b98e80d 1124,1126,1463
+  s_0d3258ca9ec561::t_c4eb820f801b13 1455
+  s_0d3258ca9ec561::t_aff61e3be90c60 46-49,117,124,126-130,132-133,156,188,202,210,259,267,287,295-296,309-311,351,512,515-519,521-522,562-563,585-588,688,716-733,752-757,759,772,778,829,845-849,921
+  s_0d3258ca9ec561::t_a5d4c96542a6c1 279-281,318-319,322-325,343-344
+  s_0d3258ca9ec561::t_6b33738de4b143 277-278,282-286,288-294,297-308,312-317,320-321,326-327
+  s_7aed2d9a3876e3::t_eb31596f5abd75 1-45,50-72,74-116,118-123,125,134-155,157-174,222-258,260-266,268-276,345-346,348-350,352-511,513-514,523-561,564-574,576-584,589-687,689-715,734-751,758,760-771,773-777,779-828,830-844,850-869,871-872,874-881,885-888,890-906,908-912,932-945,947-961,964-965,967-1113,1115,1117-1123,1127-1131,1133-1162,1165-1166,1169-1454,1456-1462,1464-1619
+  s_0d3258ca9ec561::t_536a296e5be1c6 1114,1116
+  s_0d3258ca9ec561::t_d07880adb08cb2 131,520
+  s_0d3258ca9ec561::t_db78ce80633677 328-342
+uv.lock
+  s_0d3258ca9ec561::t_56aa85f910dd08 1073
+  s_ee5cc41b994920::t_139fbb424aca23 1095-1098
+packages/gooddata-eval/src/gooddata_eval/core/evaluators/visualization.py
+  s_0d3258ca9ec561::t_3d058507ed4a45 16,35,51-52,62,74,118-119,131,194,206-207
+  s_0d3258ca9ec561::t_ee5e5bac6e55d3 105,142-143
+  s_0d3258ca9ec561::t_ab0639a492ab12 21
+packages/gooddata-eval/src/gooddata_eval/core/granularity.py
+  s_7aed2d9a3876e3::t_eb31596f5abd75 1-65
+packages/gooddata-eval/pyproject.toml
+  s_0d3258ca9ec561::t_1208b264c050ac 44-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "fd07961b51a4e988f0c3e6dc3cd2d1a06d983137",
+  "prompts": {},
+  "sessions": {
+    "s_0d3258ca9ec561": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4484c733-c6cd-4759-bb86-6364883bd5a0",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": null
+    },
+    "s_55fe43aeb995b1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "67ec1ba7-df09-413c-baf8-b368909a703f",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    },
+    "s_7aed2d9a3876e3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf384832-c143-4e21-ab9e-efaa1c64a99c",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    },
+    "s_ee5cc41b994920": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a4aa36d-5864-4014-bd73-a9160c2f8d78",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "zdenekmusil-gd <zdenek.musil@gooddata.com>"
+    }
+  }
+}
