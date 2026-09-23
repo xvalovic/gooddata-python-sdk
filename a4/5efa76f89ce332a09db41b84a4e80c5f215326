@@ -1,0 +1,19 @@
+packages/gooddata-eval/tests/test_scoring.py
+  s_396b87c152c012::t_938801caf340a4 454-455
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a45efa76f89ce332a09db41b84a4e80c5f215326",
+  "prompts": {},
+  "sessions": {
+    "s_396b87c152c012": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92c5c645-bba3-472e-aefa-e753607e5231",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Roman Valovic <xvalovic@mendelu.cz>"
+    }
+  }
+}
